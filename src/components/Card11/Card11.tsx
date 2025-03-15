@@ -65,6 +65,9 @@ const Card11: FC<Card11Props> = ({
 						title={title || ''}
 					></span>
 				</h3>
+				<button className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-md">
+					My New Button
+				</button>
 				<div className="mt-auto flex flex-wrap items-end justify-between gap-2.5">
 					<PostCardLikeAndComment
 						commentCount={commentCount || 0}
@@ -80,9 +83,6 @@ const Card11: FC<Card11Props> = ({
 						className="relative"
 					/>
 				</div>
-				<button className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-md">
-					My New Button
-				</button>
 			</div>
 		</div>
 	)
