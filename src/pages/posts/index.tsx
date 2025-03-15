@@ -136,7 +136,6 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
     function checkRouterQueryFilter(
         routerQueryFilter: `${PostObjectsConnectionOrderbyEnum}/${OrderEnum}`,
     ) {
-        // tra ve false neu khong co filter/ lan dau tien vao trang  / khi chua click vao filter nao
         if (!routerQueryFilter) {
             return false
         }
@@ -175,7 +174,6 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
                             <hr className="border-slate-200 dark:border-slate-700" />
 
                             <main>
-                                {/* TABS FILTER */}
                                 <div className="flex flex-col lg:flex-row lg:justify-between">
                                     <TabFilters
                                         initCatIds={ctxQuery.categoryIn}
@@ -219,7 +217,6 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
                                     </div>
                                 </div>
 
-                                {/* LOOP ITEMS */}
                                 <GridPostsArchive
                                     posts={initPosts}
                                     showNextPagination={posts?.pageInfo.hasNextPage}
@@ -229,8 +226,6 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
                                 />
                             </main>
                         </div>
-
-                        {/* SUBCRIBES */}
                     </div>
                 </div>
             </PageLayout>
@@ -240,7 +235,6 @@ const Page: FaustPage<PostsFilterPageQueryGetPostsQuery> = (props) => {
 
 Page.variables = (context) => {
     const { params, query = {} } = context as GetServerSidePropsContext
-    // query: { search: 'x', tagIn: ['1'], authorIn: ['2'], categoryIn: ['3'], page: '1', order: 'desc', field: 'date' }
 
     const search = typeof query.search === 'string' ? query.search || null : null
 
@@ -273,7 +267,6 @@ Page.variables = (context) => {
     let last =
         typeof query.last === 'string' ? parseInt(query.last) || null : null
 
-    // lan dau request thi first = 20, last = null
     if (!after && !before) {
         first = GET_POSTS_FIRST_COMMON
         last = null
