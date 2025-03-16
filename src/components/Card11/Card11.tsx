@@ -39,6 +39,7 @@ const Card11: FC<Card11Props> = ({
 			className={`nc-Card11 group relative flex flex-col overflow-hidden rounded-3xl bg-white dark:bg-neutral-900 ${className}`}
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
+			//
 		>
 			<div
 				className={`relative z-10 block w-full flex-shrink-0 overflow-hidden rounded-t-3xl ${ratio}`}
@@ -65,9 +66,6 @@ const Card11: FC<Card11Props> = ({
 						title={title || ''}
 					></span>
 				</h3>
-				<button className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-md">
-					My New Button
-				</button>
 				<div className="mt-auto flex flex-wrap items-end justify-between gap-2.5">
 					<PostCardLikeAndComment
 						commentCount={commentCount || 0}

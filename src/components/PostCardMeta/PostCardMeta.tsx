@@ -39,6 +39,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
 		<div
 			className={`nc-PostCardMeta inline-flex flex-wrap items-center text-neutral-800 dark:text-neutral-200 ${className}`}
 		>
+			
 			{author?.databaseId && (
 				<Link
 					href={author?.uri || ''}
