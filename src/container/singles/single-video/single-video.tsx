@@ -96,8 +96,12 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
 	return (
 		<>
 			<header className="container relative flex flex-col py-14 xl:flex-row xl:items-center xl:py-20">
+				{/* Dodano dugme */}
+				<button onClick={() => alert('Button clicked!')} className="px-4 py-2 bg-blue-500 text-white rounded">
+					Click Me
+				</button>
 				{/*  */}
-				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black dark:bg-opacity-50"></div>
+				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black [...]
 				{/*  */}
 
 				<div className="relative pb-10 xl:pb-0 xl:pr-10">{renderHeader()}</div>
