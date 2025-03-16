@@ -101,9 +101,7 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
 					Click Me
 				</button>
 				{/*  */}
-				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black [...]
-				{/*  */}
-
+				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black"></div>
 				<div className="relative pb-10 xl:pb-0 xl:pr-10">{renderHeader()}</div>
 				<div className="relative flex-shrink-0 xl:w-8/12">
 					<div className="aspect-h-16 aspect-w-16 z-0 overflow-hidden rounded-3xl border-4 border-neutral-300 bg-neutral-800 shadow-2xl sm:aspect-h-9 dark:border-neutral-800">
