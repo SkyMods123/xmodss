@@ -54,8 +54,7 @@ const Page: FaustPage<SearchPageQueryGetPostsBySearchQuery> = (props) => {
 				generalSettings={
 					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 				}
-			>	
-				<h1>Search</h1>
+			>
 				<SearchPageLayout
 					top10Categories={_top10Categories}
 					handleChangeFilterPosts={handleChangeFilterPosts}

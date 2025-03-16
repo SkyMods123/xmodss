@@ -127,7 +127,6 @@ const Page: FaustPage<SearchPageQueryGetUsersBySearchQuery> = (props) => {
 				props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 			}
 		>
-			<h1>Hello</h1>
 			<SearchPageLayout top10Categories={_top10Categories}>
 				{/* LOOP ITEMS */}
 				{!currentUsers.length && !loading ? (
