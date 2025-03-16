@@ -96,10 +96,29 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
 	return (
 		<>
 			<header className="container relative flex flex-col py-14 xl:flex-row xl:items-center xl:py-20">
+				{/* Dodano dugme */}
+				<button onClick={() => alert('Button clicked!')} className="px-4 py-2 bg-blue-500 text-white rounded">
+					Click Me
+				</button>
+				{/* Dodan HTML kod */}
+				<div className="min-h-screen bg-background">
+					<nav className="sticky top-0 z-50 hidden border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:block">
+						<div className="container flex h-14 items-center lg:px-14">
+							<button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10" aria-label="Go back">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-left h-4 w-4">
+									<path d="m15 18-6-6 6-6"></path>
+								</svg>
+								<span className="sr-only">Go back</span>
+							</button>
+							<span className="ml-4 text-lg font-semibold">ESP (Free)</span>
+						</div>
+					</nav>
+					<main className="container px-4 py-6 lg:px-14">
+						{/* Ostatak HTML koda */}
+					</main>
+				</div>
 				{/*  */}
-				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black dark:bg-opacity-50"></div>
-				{/*  */}
-
+				<div className="nc-PageSingleVideo__headerWrap absolute inset-y-0 end-1/2 w-screen translate-x-1/2 transform bg-neutral-900 xl:w-[calc(100vw/2)] xl:translate-x-0 xl:rounded-e-[40px] dark:bg-black"></div>
 				<div className="relative pb-10 xl:pb-0 xl:pr-10">{renderHeader()}</div>
 				<div className="relative flex-shrink-0 xl:w-8/12">
 					<div className="aspect-h-16 aspect-w-16 z-0 overflow-hidden rounded-3xl border-4 border-neutral-300 bg-neutral-800 shadow-2xl sm:aspect-h-9 dark:border-neutral-800">
