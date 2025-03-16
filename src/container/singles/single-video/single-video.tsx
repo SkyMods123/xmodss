@@ -115,7 +115,7 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
                                 <div className="flex flex-col gap-1">
                                     <div className="flex items-center justify-between gap-3">
                                         <div className="flex min-w-0 items-center gap-3">
-                                            <img alt="Game icon" loading="lazy" width="32" height="32" decoding="async" className="flex-shrink-0 rounded-lg" src="...">
+                                            <img alt="Game icon" loading="lazy" width="32" height="32" decoding="async" className="flex-shrink-0 rounded-lg">
                                             <div className="min-w-0">
                                                 <div className="text-2xl font-semibold leading-none tracking-tight">
                                                     <h1 className="truncate text-xl font-bold sm:text-2xl">ESP (Free)</h1>
@@ -127,16 +127,13 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
                                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                         <a aria-label="Search for game" className="hover:text-green-500 hover:underline" href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha">Dead Rails Alpha</a>
                                         <span>•</span>
-                                        <div className="flex items-center gap-1">
-                                            <svg ...></svg>2 days ago
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="p-6 pt-0">
                                 <div className="flex flex-col gap-6 lg:flex-row">
                                     <div className="group relative w-full overflow-hidden rounded-lg lg:w-7/12">
-                                        <img alt="Script preview thumbnail" fetchpriority="high" loading="eager" width="640" height="360" decoding="async" className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105" src="...">
+                                        <img alt="Script preview thumbnail" fetchpriority="high" loading="eager" width="640" height="360" decoding="async" className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105">
                                         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                                         <div className="absolute bottom-3 left-3 text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">Script Preview</div>
                                         <div className="absolute right-3 top-3 flex flex-col items-end gap-2">
@@ -146,9 +143,6 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
                                     <div className="flex flex-col justify-between gap-4 lg:w-5/12">
                                         <div className="space-y-4">
                                             <div className="flex items-center justify-between">
-                                                <a className="flex items-center gap-2" href="https://rscripts.net/@0x256">
-                                                    <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"></span>
-                                                </a>
                                                 <div className="flex items-center gap-2"></div>
                                             </div>
                                             <div className="flex items-center gap-3">
@@ -156,11 +150,6 @@ const SingleTypeVideo: FC<Props> = ({ post }) => {
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-3">
-                                            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:text-accent-foreground h-10 px-4 py-2 col-span-2 transition-colors duration-200 hover:bg-accent">
-                                                <span className="flex items-center gap-2">
-                                                    <svg ...></svg>Download
-                                                </span>
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
