@@ -7,9 +7,9 @@ const SinglePage = ()=>{
                 <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="preload" as="image" href="https://rscripts.net/logo.svg" />
-                <link rel="stylesheet" href="./kola3_files/0d7c83ff46c8f2cd.css" />
-                <link rel="stylesheet" href="./kola3_files/e27b94790ece9e59.css" />
-                <link rel="stylesheet" href="./kola3_files/4932d2e513585f8a.css" />
+                <link rel="stylesheet" href="/src/styles/0d7c83ff46c8f2cd.css" />
+                <link rel="stylesheet" href="/src/styles/e27b94790ece9e59.css" />
+                <link rel="stylesheet" href="/src/styles/4932d2e513585f8a.css" />
             </Head>
             <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
                 <div className="flex flex-col space-y-1.5 p-6">
