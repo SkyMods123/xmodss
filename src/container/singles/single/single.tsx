@@ -5,6 +5,15 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 
+import PostCardLikeAndComment from '@/components/PostCardLikeAndComment/PostCardLikeAndComment'
+import NcBookmark from '@/components/NcBookmark/NcBookmark'
+import SocialsShareDropdown from '@/components/SocialsShareDropdown/SocialsShareDropdown'
+import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import PostActionDropdown from '@/components/PostActionDropdown/PostActionDropdown'
+import { useRouter } from 'next/router'
+import { NC_SITE_SETTINGS } from '@/contains/site-settings'
+import { FragmentTypePostFullFields } from '../type'
+
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
@@ -80,7 +89,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                              Sky Mods
+                              likeCount={ncPostMetaData?.likesCount || 0}
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
