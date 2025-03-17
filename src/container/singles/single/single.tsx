@@ -108,7 +108,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                         <div className="flex flex-col gap-6 lg:flex-row">
                           <div className="group relative w-full overflow-hidden rounded-lg lg:w-7/12">
                             <img
-                              src={featuredImage?.sourceUrl || ''}
+                              src={featuredImage}
                               fetchPriority="high"
                               loading="eager"
                               width="640"
