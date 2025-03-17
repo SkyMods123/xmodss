@@ -13,12 +13,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
   // Destructure post data
   const {
     title,
-    content,
     date,
     author,
     databaseId,
     excerpt,
-    featuredImage,
     ncPostMetaData,
   } = getPostDataFromPostFragment(post || {});
 
