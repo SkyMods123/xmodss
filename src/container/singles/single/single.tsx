@@ -69,7 +69,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               />
                               <div className="min-w-0">
                                 <div className="text-2xl font-semibold leading-none tracking-tight">
-                                  <h1 className="truncate text-xl font-bold sm:text-2xl">ESP (Free)</h1>
+                                    <h2 className="text-white text-xl font-semibold">{title}</h2>
                                 </div>
                               </div>
                             </div>
