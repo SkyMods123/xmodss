@@ -43,7 +43,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 						</div>
 						<div className="flex flex-col lg:flex-row justify-between gap-5">
 							<div className="basis-full lg:basis-7/12 mt-4">
-								<img src="/images/noFilter.webp" alt="Game Thumbnail" className="w-full rounded-lg" />
+								<img src={featuredImage?.sourceUrl || ''} alt="Game Thumbnail" className="w-full rounded-lg" />
 							</div>
 							<div className="basis-full lg:basis-5/12 flex flex-col justify-between mt-3">
 								<div className="text-white">
