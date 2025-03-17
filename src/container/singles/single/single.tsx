@@ -1,34 +1,35 @@
 import React, { FC } from 'react'
+import Head from 'next/head' // Add this import
 import NcImage from '@/components/NcImage/NcImage'
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
 import SingleHeader from '../SingleHeader'
 import { FragmentTypePostFullFields } from '@/container/type'
 
 export interface SingleType1Props {
-	post: FragmentTypePostFullFields
-	showRightSidebar?: boolean
+    post: FragmentTypePostFullFields
+    showRightSidebar?: boolean
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
-	//
-	const {
-		title,
-		content,
-		date,
-		author,
-		databaseId,
-		excerpt,
-		featuredImage,
-		ncPostMetaData,
-	} = getPostDataFromPostFragment(post || {})
-	//
-	const hasFeaturedImage = !!featuredImage?.sourceUrl
+    //
+    const {
+        title,
+        content,
+        date,
+        author,
+        databaseId,
+        excerpt,
+        featuredImage,
+        ncPostMetaData,
+    } = getPostDataFromPostFragment(post || {})
+    //
+    const hasFeaturedImage = !!featuredImage?.sourceUrl
 
-	const imgWidth = featuredImage?.mediaDetails?.width || 1000
-	const imgHeight = featuredImage?.mediaDetails?.height || 750
-	return (
-		<>
-			    <Head>
+    const imgWidth = featuredImage?.mediaDetails?.width || 1000
+    const imgHeight = featuredImage?.mediaDetails?.height || 750
+    return (
+        <>
+            <Head>
                 <title>Plitch Trainer</title>
                 <meta name="description" content="Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
                 <meta name="keywords" content="Plitch Trainer, cheat provider, game mods, gaming cheats, game trainers" />
@@ -49,7 +50,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                         <div className="flex justify-between items-center">
                             <h2 className="text-white text-xl font-semibold">Plitch Trainer</h2>
                             <div className="flex items-center bg-[#202731cc] text-[#d4dae3] text-lg px-3 py-2 rounded-full gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"/><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M14.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M10.5 16.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/></svg>
                                 <span>2,569 views</span>
                             </div>
                         </div>
@@ -68,17 +69,16 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                             <h1>No6No6No7Verified</h1>
                                         </div>
                                         <div className="flex gap-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6 cursor-pointer"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-                                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6 cursor-pointer"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg> */}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"/><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M14.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M10.5 16.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/></svg>
                                         </div>
                                     </div>
                                     <div className="flex gap-7 mt-3">
                                         <span className="flex items-center bg-[#202731cc] gap-3 px-5 py-3 rounded-lg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-thumbs-up null"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"/><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M14.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M10.5 16.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/></svg>
                                             <span className="text-xl font-medium">0</span>
                                         </span>
                                         <span className="flex items-center bg-[#202731cc] gap-3 px-5 py-3 rounded-lg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-thumbs-down null"><path d="M17 14V2"></path><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path></svg>                                        
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"/><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M14.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M10.5 16.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/></svg>
                                             <span className="text-xl font-medium">0</span>
                                         </span>
                                     </div>
@@ -86,7 +86,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             
                                 <div className="mt-7">
                                     <button className="flex justify-center items-center gap-2 border border-[#4c5661] text-white text-lg font-semibold w-full py-3 rounded-xl">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-copy mr-2 h-4 w-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"/><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M14.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M7.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/><path d="M10.5 16.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/></svg>
                                         <span>Copy Script</span>
                                     </button>
                                 </div>
@@ -131,43 +131,43 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                     </div>
                 </div>
             </div>
-			<div className={`nc-PageSingle pt-8 lg:pt-16`}>
-				<header className="container rounded-xl">
-					<div
-						className={
-							!hasFeaturedImage && showRightSidebar
-								? ''
-								: `mx-auto max-w-screen-md`
-						}
-					>
-						<SingleHeader post={{ ...post }} />
-						{!hasFeaturedImage && (
-							<div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
-						)}
-					</div>
-				</header>
+            <div className={`nc-PageSingle pt-8 lg:pt-16`}>
+                <header className="container rounded-xl">
+                    <div
+                        className={
+                            !hasFeaturedImage && showRightSidebar
+                                ? ''
+                                : `mx-auto max-w-screen-md`
+                        }
+                    >
+                        <SingleHeader post={{ ...post }} />
+                        {!hasFeaturedImage && (
+                            <div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
+                        )}
+                    </div>
+                </header>
 
-				{/* FEATURED IMAGE */}
-				{!!hasFeaturedImage && (
-					<NcImage
-						alt={title}
-						containerClassName="container my-10 sm:my-12"
-						className={`mx-auto rounded-xl ${
-							imgWidth <= 768 && ncPostMetaData?.showRightSidebar
-								? 'w-full max-w-screen-md'
-								: ''
-						}`}
-						src={featuredImage?.sourceUrl || ''}
-						width={imgWidth}
-						height={imgHeight}
-						sizes={'(max-width: 1024px) 100vw, 1280px'}
-						priority
-						enableDefaultPlaceholder
-					/>
-				)}
-			</div>
-		</>
-	)
+                {/* FEATURED IMAGE */}
+                {!!hasFeaturedImage && (
+                    <NcImage
+                        alt={title}
+                        containerClassName="container my-10 sm:my-12"
+                        className={`mx-auto rounded-xl ${
+                            imgWidth <= 768 && ncPostMetaData?.showRightSidebar
+                                ? 'w-full max-w-screen-md'
+                                : ''
+                        }`}
+                        src={featuredImage?.sourceUrl || ''}
+                        width={imgWidth}
+                        height={imgHeight}
+                        sizes={'(max-width: 1024px) 100vw, 1280px'}
+                        priority
+                        enableDefaultPlaceholder
+                    />
+                )}
+            </div>
+        </>
+    )
 }
 
 export default SingleType1
