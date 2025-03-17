@@ -1,12 +1,12 @@
 import Head from 'next/head';
 
 const SinglePage = () => {
-    return (
+  return (
     <body className="bg-background __className_3a0388 min-h-screen">
       <div className="coverimg absolute -top-[380px] hidden h-[50rem] w-full opacity-30 blur-[2px] md:block">
         <img
           alt="background coverart"
-          fetchpriority="high"
+          fetchPriority="high"
           loading="eager"
           width="135"
           height="160"
@@ -79,7 +79,7 @@ const SinglePage = () => {
                       <div className="group relative w-full overflow-hidden rounded-lg lg:w-7/12">
                         <img
                           alt="Script preview thumbnail"
-                          fetchpriority="high"
+                          fetchPriority="high"
                           loading="eager"
                           width="640"
                           height="360"
