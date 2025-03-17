@@ -1,102 +1,20 @@
 #single-entry-content {
-  overflow-wrap: break-word;
+	overflow-wrap: break-word;
 
-  :where(h2, h3, h4):not(:where([class~='not-prose'] *)) {
-    @apply scroll-mt-10 lg:scroll-mt-24;
-  }
+	:where(h2, h3, h4):not(:where([class~='not-prose'] *)) {
+		@apply scroll-mt-10 lg:scroll-mt-24;
+	}
 
-  iframe {
-    @apply max-w-full;
-  }
+	iframe {
+		@apply max-w-full;
+	}
 
-  .wp-block-table,
-  .table-wrapper {
-    @apply overflow-x-auto;
-  }
+	.wp-block-table,
+	.table-wrapper {
+		@apply overflow-x-auto;
+	}
 }
 
 .not-prose {
-  @apply text-base font-normal text-neutral-900 dark:text-neutral-100;
-}
-
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  @apply lg:px-14;
-}
-
-.grid {
-  @apply grid-cols-1 gap-6 lg:grid-cols-3;
-}
-
-.z-10 {
-  @apply space-y-6 lg:col-span-2;
-}
-
-.header {
-  margin-top: 0 !important; // Instead of @apply !mt-0;
-}
-
-.rounded-lg {
-  @apply rounded-lg border text-card-foreground shadow-sm bg-card/70 backdrop-blur-sm;
-}
-
-.flex {
-  @apply flex flex-col space-y-1.5 p-6 pb-4;
-}
-
-.flex-items-center {
-  @apply flex items-center justify-between gap-3;
-}
-
-.min-w-0 {
-  @apply flex min-w-0 items-center gap-3;
-}
-
-.text-2xl {
-  @apply text-2xl font-semibold leading-none tracking-tight;
-}
-
-.hover-text-green {
-  @apply hover:text-green-500 hover:underline;
-}
-
-.lucide {
-  @apply lucide lucide-clock h-3.5 w-3.5;
-}
-
-.mt-4 {
-  @apply mt-4 flex flex-col gap-4 sm:flex-row;
-}
-
-.script-description {
-  @apply script-description;
-}
-
-.w-full {
-  @apply w-full flex-col rounded border bg-card/40 pb-2 block sm:hidden;
-}
-
-.strong {
-  @apply block text-[11px] text-foreground/50;
-}
-
-.mx-auto {
-  @apply mx-auto flex items-center justify-center min-h-[250px];
-}
-
-.script-similar-scripts {
-  @apply script-similar-scripts lg:col-span-1;
-}
-
-.sticky {
-  @apply rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60;
-}
-
-.p-6 {
-  @apply flex flex-col space-y-1.5 p-6 pb-3;
-}
-
-.text-2xl {
-  @apply text-2xl font-semibold leading-none tracking-tight;
+	@apply text-base font-normal text-neutral-900 dark:text-neutral-100;
 }
