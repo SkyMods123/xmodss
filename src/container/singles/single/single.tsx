@@ -18,7 +18,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         author,
         databaseId,
         excerpt,
-        likeCount,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
