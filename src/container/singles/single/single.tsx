@@ -18,6 +18,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         author,
         databaseId,
         excerpt,
+        likeCount,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
@@ -99,7 +100,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                               </svg>
-                              2 days ago
+                              likeCount={ncPostMetaData?.likesCount || 0}
                             </div>
                           </div>
                         </div>
