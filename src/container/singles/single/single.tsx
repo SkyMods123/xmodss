@@ -162,14 +162,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                     </div>
                   </header>
                 </div>
-                <div className="w-full flex-col rounded border bg-card/40 pb-2 block sm:hidden" id="advert1">
-                  <div className="flex w-full items-center justify-between px-2 py-2 text-left">
-                    <strong className="block text-[11px] text-foreground/50">ADVERTISEMENT</strong>
-                  </div>
-                  <div className="mx-auto flex items-center justify-center min-h-[250px]">
-                    <div data-fuse="23117773104"></div>
-                  </div>
-                </div>
                 <aside className="script-similar-scripts lg:col-span-1">
                   <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
