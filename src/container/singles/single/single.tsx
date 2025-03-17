@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC } from 'react';
 import Head from 'next/head'; // Add this import
 import NcImage from '@/components/NcImage/NcImage';
