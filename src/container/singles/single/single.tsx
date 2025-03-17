@@ -81,11 +81,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                              <PostCardMeta // Add PostCardMeta component here
+                              <PostCardMeta // DATUM
                                 className="text-sm"
-                                meta={{ date, author }}
-                                hiddenAvatar={false}
-                                avatarSize="h-7 w-7 text-sm"
+                                meta={{ date }}
                               />
                             </a>
                             <span>•</span>
@@ -130,7 +128,14 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               <div className="flex items-center justify-between">
                                 <a className="flex items-center gap-2" href="https://rscripts.net/@0x256">
                                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                                    <span className="flex h-full w-full items-center justify-center rounded-full bg-muted">0x</span>
+                                    <span className="flex h-full w-full items-center justify-center rounded-full bg-muted">
+                                        <PostCardMeta // AURTOR
+                                            className="text-sm"
+                                            meta={{ author }}
+                                            hiddenAvatar={false}
+                                           avatarSize="h-7 w-7 text-sm"
+                                        />  
+                                    </span>
                                   </span>
                                   <span className="flex cursor-pointer items-center gap-1 text-base font-medium text-foreground hover:text-primary">
                                     viewCount
