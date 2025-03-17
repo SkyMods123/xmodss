@@ -4,7 +4,6 @@ import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
-import { showViewCount } from '@/utils/showViewCount';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -27,17 +26,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-    const [viewCount, setViewCount] = useState(0);
-
-    // Fetch the view count when the component mounts
-    useEffect(() => {
-        const fetchViewCount = async () => {
-            const count = await showViewCount(databaseId);
-            setViewCount(count);
-        };
-        fetchViewCount();
-    }, [databaseId]);
 
     return (
         <>
@@ -92,7 +80,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                                <h2 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">Views: {viewCount}</h2>
+                              Sky Mods
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
