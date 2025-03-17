@@ -17,6 +17,7 @@ import { NC_SITE_SETTINGS } from '@/contains/site-settings'
 import { FragmentTypePostFullFields } from '../type'
 
 export interface SingleType1Props {
+    className?: string
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
 }
