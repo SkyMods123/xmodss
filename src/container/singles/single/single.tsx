@@ -192,13 +192,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                     )}
                 </div>
             </header>
-            {!!hasFeaturedImage && (
-                <NcImage
-                    alt={title}
-                    containerClassName="container my-10 sm:my-12"
-                    enableDefaultPlaceholder
-                />
-            )}
         </div>
         </>
     );
