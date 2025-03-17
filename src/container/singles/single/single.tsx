@@ -81,7 +81,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                              <h2 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">{viewCount={ncPostMetaData?.viewsCount || 1}}</h2>
+                              Dead Rails Alpha
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
@@ -100,7 +100,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                               </svg>
-                               2 days ago
+                              2 days ago
                             </div>
                           </div>
                         </div>
