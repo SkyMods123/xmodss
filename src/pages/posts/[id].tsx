@@ -5,7 +5,7 @@ const SinglePage = ()=>{
         <>
             <Head>
                 <title>Plitch Trainer</title>
-                <meta name="description" content="Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
+                <meta name="description" content="KRETEN  Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
                 <meta name="keywords" content="Plitch Trainer, cheat provider, game mods, gaming cheats, game trainers" />
                 {/* <meta name="author" content="Your Name" /> */}
                 <meta property="og:title" content="Plitch Trainer" />
