@@ -125,22 +125,15 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                           </div>
                           <div className="flex flex-col justify-between gap-4 lg:w-5/12">
                             <div className="space-y-4">
-                              <div className="flex items-center justify-between">
-                                <a className="flex items-center gap-2" href="https://rscripts.net/@0x256">
-                                  <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                                    <span className="flex h-full w-full items-center justify-center rounded-full bg-muted">
                                         <PostCardMeta // AURTOR
                                             className="text-sm"
                                             meta={{ author }}
                                             hiddenAvatar={false}
                                            avatarSize="h-7 w-7 text-sm"
                                         />  
-                                    </span>
-                                  </span>
                                   <span className="flex cursor-pointer items-center gap-1 text-base font-medium text-foreground hover:text-primary">
                                     viewCount
                                   </span>
-                                </a>
                               </div>
                             </div>
                             <div className="grid grid-cols-2 gap-3">
