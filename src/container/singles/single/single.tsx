@@ -4,6 +4,7 @@ import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
+import { getUserDataFromUserCardFragment } from '@/utils/getUserDataFromUserCardFragment'
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -80,7 +81,11 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                              Sky Mods
+                              PostCardMeta // Add PostCardMeta component here
+                                className="text-sm"
+                                meta={{ date, author }}
+                                hiddenAvatar={false}
+                                avatarSize="h-7 w-7 text-sm"
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
