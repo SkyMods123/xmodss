@@ -113,8 +113,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               height="360"
                               fetchPriority="high"
                               loading="eager"
-                              width="640"
-                              height="360"
                               decoding="async"
                               data-nimg="1"
                               className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
