@@ -1,3 +1,4 @@
+// PICOLOVKA
 import React, { FC } from "react";
 import NcImage from "@/components/NcImage/NcImage";
 import { getPostDataFromPostFragment } from "@/utils/getPostDataFromPostFragment";
