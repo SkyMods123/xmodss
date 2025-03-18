@@ -12,7 +12,7 @@ export interface SingleType1Props {
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
-    const {
+    const {11
         title,
         content,
         date,
@@ -83,7 +83,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             >
                               <PostCardMeta // DATUM
                                 className="text-sm"
-                                meta={{date}}
+                                meta={{ date, author }}
+                                hiddenAvatar={true}
+                                avatarSize="h-7 w-7 text-sm"
                               />
                             </a>
                             <span>•</span>
