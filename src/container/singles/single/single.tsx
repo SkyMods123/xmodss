@@ -28,6 +28,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
+    const { date } = meta
+
     return (
         <>
         <Head>
@@ -81,12 +83,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                              <PostCardMeta // DATUM
-                                 className="text-sm"
-                                 meta={{ date }}
-                                 hiddenAvatar={true}
-                                 avatarSize="h-7 w-7 text-sm"
-                              />
+                                <h3 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">{date}</h3>
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
