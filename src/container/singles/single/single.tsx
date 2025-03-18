@@ -32,8 +32,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
         content,
+	meta,
         databaseId,
-	date,
         excerpt,
         featuredImage,
         ncPostMetaData,
@@ -44,6 +44,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
+
+    const { date } = meta;
 
     return (
         <>
