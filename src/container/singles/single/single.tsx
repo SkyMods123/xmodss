@@ -6,7 +6,24 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta'; // Import PostCardMeta
 
+import Avatar from '@/components/Avatar/Avatar'
+import Link from 'next/link'
+import { NcmazFcUserFullFieldsFragment } from '@/__generated__/graphql'
+import ncFormatDate from '@/utils/formatDate'
+import { FragmentType } from '@/__generated__'
+import { NC_USER_FULL_FIELDS_FRAGMENT } from '@/fragments'
+import { getUserDataFromUserCardFragment } from '@/utils/getUserDataFromUserCardFragment'
+
 export interface SingleType1Props {
+    className?: string
+	meta: {
+		date?: string
+		author?:
+			| FragmentType<typeof NC_USER_FULL_FIELDS_FRAGMENT>
+			| NcmazFcUserFullFieldsFragment
+	}
+	hiddenAvatar?: boolean
+	avatarSize?: string
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
 }
