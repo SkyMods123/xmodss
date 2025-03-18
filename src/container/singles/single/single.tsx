@@ -6,24 +6,7 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta'; // Import PostCardMeta
 
-import Avatar from '@/components/Avatar/Avatar'
-import Link from 'next/link'
-import { NcmazFcUserFullFieldsFragment } from '@/__generated__/graphql'
-import ncFormatDate from '@/utils/formatDate'
-import { FragmentType } from '@/__generated__'
-import { NC_USER_FULL_FIELDS_FRAGMENT } from '@/fragments'
-import { getUserDataFromUserCardFragment } from '@/utils/getUserDataFromUserCardFragment'
-
 export interface SingleType1Props {
-    className?: string
-	meta: {
-		date?: string
-		author?:
-			| FragmentType<typeof NC_USER_FULL_FIELDS_FRAGMENT>
-			| NcmazFcUserFullFieldsFragment
-	}
-	hiddenAvatar?: boolean
-	avatarSize?: string
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
 }
@@ -32,20 +15,18 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
         content,
-	meta,
+        date,
+        author,
         databaseId,
         excerpt,
         featuredImage,
         ncPostMetaData,
-	    
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-    const { date } = meta;
 
     return (
         <>
@@ -100,7 +81,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               className="hover:text-green-500 hover:underline"
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
-                                <h3 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">{date}</h3>
+                              <PostCardMeta // DATUM
+                                className="text-sm"
+                                meta={{ date, author }}
+                                hiddenAvatar={false}
+                                avatarSize="h-7 w-7 text-sm"
+                              />
                             </a>
                             <span>•</span>
                             <div className="flex items-center gap-1">
@@ -195,6 +181,16 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
             </main>
           </div>
         </body>
+        <div className={`nc-PageSingle pt-8 lg:pt-16`}>
+            <header className="container rounded-xl">
+                <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
+                    <SingleHeader post={{ ...post }} />
+                    {!hasFeaturedImage && (
+                        <div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
+                    )}
+                </div>
+            </header>
+        </div>
         </>
     );
 };
