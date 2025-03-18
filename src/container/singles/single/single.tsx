@@ -82,10 +82,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                               href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
                             >
                               <PostCardMeta // DATUM
-                                className="text-sm"
-                                meta={{ date, author }}
-                                hiddenAvatar={false}
-                                avatarSize="h-7 w-7 text-sm"
+                                 className="text-sm"
+                                 meta={{ date }}
+                                 hiddenAvatar={true}
+                                 avatarSize="h-7 w-7 text-sm"
                               />
                             </a>
                             <span>•</span>
