@@ -32,7 +32,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
         content,
-        date,
+        date4,
         author,
         databaseId,
         excerpt,
