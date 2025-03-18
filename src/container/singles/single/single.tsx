@@ -167,8 +167,20 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                       </div>
                     </div>
                   </header>
-				  <section class="script-description"><div class="rounded-lg border bg-card text-card-foreground shadow-sm"><div class="flex flex-col space-y-1.5 p-6"><div class="text-2xl font-semibold leading-none tracking-tight"><h2>Description</h2></div></div><div class="p-6 pt-0 space-y-4"><div class="description prose prose-invert max-w-none"><p><strong>Script Update! Dead Rails 1.0.1 Added Aimbot,Melee Kill Aura,Auto aim &amp; shoot, Gun Modifications,Auto Heal,No Bandage Delay Use</strong></p>
-                  </div></div></div></section>
+				  <section className="script-description">
+            			<div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+               				<div className="flex flex-col space-y-1.5 p-6">
+                           	    <div className="text-2xl font-semibold leading-none tracking-tight">
+                                    <h2>Description</h2>
+							    </div>
+						    </div>
+					    </div>
+						<div className="p-6 pt-0 space-y-4">
+                            <div className="description prose prose-invert max-w-none">
+                                <p><strong>Script Update! Dead Rails 1.0.1 Added Aimbot, Melee Kill Aura, Auto aim &amp; shoot, Gun Modifications, Auto Heal, No Bandage Delay Use</strong></p>
+							</div>
+                        </div>
+                    </section>
                 </div>
                 <aside className="script-similar-scripts lg:col-span-1">
                   <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
