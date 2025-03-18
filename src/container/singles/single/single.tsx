@@ -175,7 +175,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 					  </div>
 				  </div>
 				  <div className="p-6 pt-0 space-y-4">
-                            		  <div className="description prose prose-invert max-w-none">
+                            		  <div className="flex flex-col gap-2">
                                 		  <p><strong>Script Update! Dead Rails 1.0.1 Added Aimbot, Melee Kill Aura, Auto aim &amp; shoot, Gun Modifications, Auto Heal, No Bandage Delay Use</strong></p>
 					   </div>
 				  </div>		  
