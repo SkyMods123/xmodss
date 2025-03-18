@@ -83,9 +83,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             >
                               <PostCardMeta // DATUM
                                 className="text-sm"
-                                meta={{ date, author }}
-                                hiddenAvatar={false}
-                                avatarSize="h-7 w-7 text-sm"
+                                meta={{ date }}
                               />
                             </a>
                             <span>•</span>
