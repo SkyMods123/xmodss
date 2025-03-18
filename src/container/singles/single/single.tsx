@@ -167,19 +167,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                       </div>
                     </div>
                   </header>
-				  <section className="script-description">
-            			<div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-               				<div className="flex flex-col space-y-1.5 p-6">
-                           	    <div className="text-2xl font-semibold leading-none tracking-tight">
-                                    <h2>Description</h2>
-						    	</div>
-								<div className="p-6 pt-0 space-y-4">
-                            		<div className="description prose prose-invert max-w-none">
-                                		<p><strong>Script Update! Dead Rails 1.0.1 Added Aimbot, Melee Kill Aura, Auto aim &amp; shoot, Gun Modifications, Auto Heal, No Bandage Delay Use</strong></p>
-									</div>
-								</div>
-							</div>
-                        </div>
+		  <section className="script-description">
+            		  <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+               			  <div className="flex flex-col space-y-1.5 p-6">
+                           	          <div className="text-2xl font-semibold leading-none tracking-tight">
+                                                  <h2>Description</h2>
+					  </div>
+				  </div>
+				  <div className="p-6 pt-0 space-y-4">
+                            		  <div className="description prose prose-invert max-w-none">
+                                		  <p><strong>Script Update! Dead Rails 1.0.1 Added Aimbot, Melee Kill Aura, Auto aim &amp; shoot, Gun Modifications, Auto Heal, No Bandage Delay Use</strong></p>
+					   </div>
+				  </div>		  
+                           </div>
                     </section>
                 </div>
                 <aside className="script-similar-scripts lg:col-span-1">
