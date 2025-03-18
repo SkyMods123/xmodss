@@ -31,13 +31,6 @@ export interface SingleType1Props {
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
-        content,
-        date4,
-        author,
-        databaseId,
-        excerpt,
-        featuredImage,
-        ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
@@ -195,16 +188,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
             </main>
           </div>
         </body>
-        <div className={`nc-PageSingle pt-8 lg:pt-16`}>
-            <header className="container rounded-xl">
-                <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
-                    <SingleHeader post={{ ...post }} />
-                    {!hasFeaturedImage && (
-                        <div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
-                    )}
-                </div>
-            </header>
-        </div>
         </>
     );
 };
