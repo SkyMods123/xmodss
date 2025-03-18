@@ -167,7 +167,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                       </div>
                     </div>
                   </header>
-		  <section className="script-description">
+			<section className="script-description">
             		  <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
                			  <div className="flex flex-col space-y-1.5 p-6">
                            	          <div className="text-2xl font-semibold leading-none tracking-tight">
@@ -180,7 +180,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 					   </div>
 				  </div>		  
                            </div>
-                    </section>
+                         </section>
                 </div>
                 <aside className="script-similar-scripts lg:col-span-1">
                   <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
