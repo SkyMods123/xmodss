@@ -31,9 +31,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     return (
         <>
             <Head>
-                <link rel="stylesheet" href="./kola3_files/0d7c83ff46c8f2cd.css" />
-                <link rel="stylesheet" href="./kola3_files/e27b94790ece9e59.css" />
-                <link rel="stylesheet" href="./kola3_files/4932d2e513585f8a.css" />
                 <title>{title}</title>
             </Head>
             <div className="bg-background __className_3a0388 min-h-screen">
