@@ -31,6 +31,12 @@ export interface SingleType1Props {
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
+        content,
+        databaseId,
+        excerpt,
+        featuredImage,
+        ncPostMetaData,
+	    
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
