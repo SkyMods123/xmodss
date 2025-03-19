@@ -201,12 +201,11 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                         <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
                                             <div className="container">
                                                 <div>
-                                                    <header
+                                                    <div
                                                         className="mb-10 text-neutral-900 dark:text-neutral-50"
-                                                        desc=""
                                                     >
                                                         Related posts
-                                                    </header>
+                                                    </div>
                                                     <SectionSliderPosts postCardName="card7" posts={posts || []} />
                                                 </div>
                                             </div>
