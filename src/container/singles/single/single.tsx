@@ -29,6 +29,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
+    const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
+
     return (
         <>
             <Head>
@@ -190,7 +192,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={[]} /> {/* Include SingleRelatedPosts here */}
+                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={_relatedPosts} /> {/* Include SingleRelatedPosts here */}
                                     </div>
                                 </div>
                             </aside>
