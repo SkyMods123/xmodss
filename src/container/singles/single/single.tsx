@@ -6,10 +6,13 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import SingleRelatedPosts from '../SingleRelatedPosts'; // Import the SingleRelatedPosts component
+import { PostDataFragmentType } from "@/data/types";
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
+    postDatabaseId: number;
+    posts: PostDataFragmentType[] | null;
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
@@ -17,6 +20,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         title,
         content,
         date,
+        postDatabaseId,
+        posts,
         author,
         databaseId,
         excerpt,
