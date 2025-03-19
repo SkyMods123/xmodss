@@ -113,16 +113,14 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="p-6 pt-0">
                                             <div className="flex flex-col gap-6 lg:flex-row">
                                                 <div className="group relative w-full overflow-hidden rounded-lg lg:w-7/12">
-                                                    <img
-                                                        src={featuredImage?.sourceUrl || ''}
+                                                    <NcImage
+                                                        containerClassName="container my-10 sm:my-12"
+                                                        className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                                                        src={featuredImage?.sourceUrl || ""}
                                                         width="640"
                                                         height="360"
-                                                        fetchPriority="high"
-                                                        loading="eager"
-                                                        decoding="async"
-                                                        data-nimg="1"
-                                                        className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
-                                                        style={{ color: 'transparent' }}
+                                                        enableDefaultPlaceholder
+                                                        priority
                                                     />
                                                 </div>
                                                 <div className="flex flex-col justify-between gap-4 lg:w-5/12">
