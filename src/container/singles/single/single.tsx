@@ -5,7 +5,6 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SectionGridPosts from '@/components/Sections/SectionGridPosts';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -28,8 +27,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-    const similarPosts = fetchSimilarPosts(databaseId);
 
     return (
         <>
@@ -193,7 +190,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                             <h2>Similar Scripts</h2>
                                         </div>
                                     </div>
-                                    <SectionGridPosts />
                                 </div>
                             </aside>
                         </div>
