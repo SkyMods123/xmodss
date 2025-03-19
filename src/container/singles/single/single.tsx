@@ -20,6 +20,8 @@ export interface SingleType1Props {
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabaseId,
         posts }) => {
+        if (!posts?.length) {
+            return <div className="py-5" />;
     const {
         title,
         content,
