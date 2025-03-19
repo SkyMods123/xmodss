@@ -3,12 +3,12 @@ import Head from 'next/head';
 import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
-import { FragmentTypePostFullFields } from '@/container/type';
+import { NcmazFcPostFullFieldsFragment } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import Card9 from '@/components/Card9/Card9';
 
 export interface SingleType1Props {
-    post: FragmentTypePostFullFields;
+    post: NcmazFcPostFullFieldsFragment;
     showRightSidebar?: boolean;
 }
 
@@ -25,7 +25,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
-
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
@@ -43,7 +42,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                         width="135"
                         height="160"
                         decoding="async"
-                        data-nimg="1"
                         className="h-[800px] w-full object-cover object-top"
                         style={{ color: 'transparent' }}
                     />
@@ -65,7 +63,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                             width="32"
                                                             height="32"
                                                             decoding="async"
-                                                            data-nimg="1"
                                                             className="flex-shrink-0 rounded-lg"
                                                             style={{ color: 'transparent' }}
                                                         />
@@ -121,7 +118,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                         fetchPriority="high"
                                                         loading="eager"
                                                         decoding="async"
-                                                        data-nimg="1"
                                                         className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
                                                         style={{ color: 'transparent' }}
                                                     />
@@ -141,7 +137,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <button
-                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:text-accent-foreground h-10 px-4 py-2 col-span-2 transition-colors duration-200 hover:bg-accent"
+                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-nowrap px-4 py-2 rounded-md border border-transparent bg-muted text-sm font-medium text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                                                         >
                                                             <span className="flex items-center gap-2">
                                                                 <svg
@@ -190,10 +186,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <Card9
-                                           post={post} 
-                                           className="mt-4" 
-                                           hoverClass="hover:bg-gray-200" 
+                                        <Card9 
+                                            post={post} 
+                                            className="mt-4" 
+                                            hoverClass="hover:bg-gray-200" 
                                         />
                                     </div>
                                 </div>
