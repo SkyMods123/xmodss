@@ -19,7 +19,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         date,
         author,
         databaseId,
-        posts,
         excerpt,
         featuredImage,
         ncPostMetaData,
