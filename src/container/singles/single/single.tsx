@@ -18,7 +18,8 @@ export interface SingleType1Props {
     posts: PostDataFragmentType[] | null;
 }
 
-const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
+const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabaseId,
+        posts }) => {
     const {
         title,
         content,
@@ -27,8 +28,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         databaseId,
         tags,
         excerpt,
-        postDatabaseId,
-        posts,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
