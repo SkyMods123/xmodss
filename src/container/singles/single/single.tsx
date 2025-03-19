@@ -5,6 +5,7 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
+import SingleRelatedPosts from '../SingleRelatedPosts'; // Import the SingleRelatedPosts component
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -189,6 +190,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
+                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={[]} /> {/* Include SingleRelatedPosts here */}
                                     </div>
                                 </div>
                             </aside>
