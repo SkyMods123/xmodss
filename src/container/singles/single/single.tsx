@@ -1,15 +1,21 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
-import Tag from '@/components/Tag/Tag'
+import Tag from '@/components/Tag/Tag';
 import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 
+import Heading from "@/components/Heading/Heading";
+import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
+import { PostDataFragmentType } from "@/data/types";
+
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
+    postDatabaseId: number;
+    posts: PostDataFragmentType[] | null;
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
@@ -21,6 +27,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         databaseId,
         tags,
         excerpt,
+        postDatabaseId,
+        posts,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
@@ -191,19 +199,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        {tags?.nodes?.length ? (
-                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
-                                                {tags.nodes.map((item) => (
-                                                    <Tag
-                                                        hideCount
-                                                        key={item.databaseId}
-                                                        name={'#' + (item.name || '')}
-                                                        uri={item.uri || ''}
-                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
-                                                    />
-                                                ))}
+                                        <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
+                                            <div className="container">
+                                                <div>
+                                                    <Heading
+                                                        className="mb-10 text-neutral-900 dark:text-neutral-50"
+                                                        desc=""
+                                                    >
+                                                        Related posts
+                                                    </Heading>
+                                                    <SectionSliderPosts postCardName="card7" posts={posts || []} />
+                                                </div>
                                             </div>
-                                        ) : null}
+                                        </div>
                                     </div>
                                 </div>
                             </aside>
