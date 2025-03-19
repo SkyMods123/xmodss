@@ -13,11 +13,7 @@ export interface SingleType1Props {
     showRightSidebar?: boolean;
 }
 
-const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabaseId, posts }) => {
-    if (!posts?.length) {
-        return <div className="py-5" />;
-    }
-
+const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
         content,
