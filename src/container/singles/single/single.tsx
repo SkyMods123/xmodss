@@ -1,18 +1,15 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
+import Tag from '@/components/Tag/Tag'
 import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SingleRelatedPosts from '../SingleRelatedPosts'; // Import the SingleRelatedPosts component
-import { PostDataFragmentType } from "@/data/types";
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
-    postDatabaseId: number;
-    posts: PostDataFragmentType[] | null;
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
@@ -20,21 +17,18 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         title,
         content,
         date,
-        postDatabaseId,
-        posts,
         author,
         databaseId,
+        tags,
         excerpt,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
-
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
 
     return (
         <>
@@ -197,7 +191,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={posts || []} /> {/* Include SingleRelatedPosts here */}
+                                        {tags?.nodes?.length ? (
+                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
+                                                {tags.nodes.map((item) => (
+                                                    <Tag
+                                                        hideCount
+                                                        key={item.databaseId}
+                                                        name={'#' + (item.name || '')}
+                                                        uri={item.uri || ''}
+                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
+                                                    />
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </aside>
