@@ -7,7 +7,6 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 
-import Heading from "@/components/Heading/Heading";
 import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
 import { PostDataFragmentType } from "@/data/types";
 
@@ -204,12 +203,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                         <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
                                             <div className="container">
                                                 <div>
-                                                    <Heading
+                                                    <header
                                                         className="mb-10 text-neutral-900 dark:text-neutral-50"
                                                         desc=""
                                                     >
                                                         Related posts
-                                                    </Heading>
+                                                    </header>
                                                     <SectionSliderPosts postCardName="card7" posts={posts || []} />
                                                 </div>
                                             </div>
