@@ -121,7 +121,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                         loading="eager"
                                                         decoding="async"
                                                         data-nimg="1"
-                                                        priority
                                                         className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
                                                         style={{ color: 'transparent' }}
                                                     />
