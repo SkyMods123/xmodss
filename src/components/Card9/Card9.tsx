@@ -5,13 +5,13 @@ import CategoryBadgeList from '@/components/CategoryBadgeList/CategoryBadgeList'
 import PostTypeFeaturedIcon from '@/components/PostTypeFeaturedIcon/PostTypeFeaturedIcon';
 import PostFeaturedMedia from '@/components/PostFeaturedMedia/PostFeaturedMedia';
 import Link from 'next/link';
-import { NcmazFcPostFullFieldsFragment } from '@/container/type';
+import { PostFullFieldsFragment } from '@/container/type';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import MyImage from '../MyImage';
 import ncFormatDate from '@/utils/formatDate';
 
 export interface Card9Props {
-    post: NcmazFcPostFullFieldsFragment;
+    post: PostFullFieldsFragment;
     ratio?: string;
     hoverClass?: string;
     className?: string;
