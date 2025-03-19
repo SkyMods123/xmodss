@@ -30,6 +30,8 @@ const SingleType1: FC<SingleType1Props> = (props) => {
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
+    const _post = props.data?.post || {}
+    
     const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
 
     return (
