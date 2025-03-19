@@ -5,6 +5,7 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
+import Card9 from '@/components/Card9/Card9';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -189,6 +190,11 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
+                                        <Card9
+                                           post={post} 
+                                           className="mt-4" 
+                                           hoverClass="hover:bg-gray-200" 
+                                        />
                                     </div>
                                 </div>
                             </aside>
