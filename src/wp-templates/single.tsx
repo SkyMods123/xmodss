@@ -143,7 +143,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 	])
 
 	const renderHeaderType = () => {
-		const pData = { ...(_post || {}), postDatabaseId: databaseId, posts: _relatedPosts }
+		const pData = { ...(_post || {}) }
 
 		if (postFormats === 'audio') {
 			return <SingleTypeAudio post={pData} />
@@ -222,4 +222,52 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 							posts={_relatedPosts}
 							postDatabaseId={databaseId}
 						/>
-					</div
+					</div>
+				)}
+			</PageLayout>
+		</>
+	)
+}
+
+Component.variables = ({ databaseId }, ctx) => {
+	return {
+		databaseId,
+		post_databaseId: Number(databaseId || 0),
+		asPreview: ctx?.asPreview,
+		headerLocation: PRIMARY_LOCATION,
+		footerLocation: FOOTER_LOCATION,
+	}
+}
+
+Component.query = gql(`
+  query GetPostSiglePage($databaseId: ID!, $post_databaseId: Int,$asPreview: Boolean = false, $headerLocation: MenuLocationEnum!, $footerLocation: MenuLocationEnum!) {
+    post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+		...NcmazFcPostFullVsEditorBlocksNoContentFields
+    }
+    posts(where: {isRelatedOfPostId:$post_databaseId}) {
+      nodes {
+      ...PostCardFieldsNOTNcmazMEDIA
+      }
+    }
+    categories(first:10, where: { orderby: COUNT, order: DESC }) {
+      nodes {
+        ...NcmazFcCategoryFullFieldsFragment
+      }
+    }
+    generalSettings {
+      ...NcgeneralSettingsFieldsFragment
+    }
+    primaryMenuItems: menuItems(where: {location:$headerLocation}, first: 80) {
+      nodes {
+        ...NcPrimaryMenuFieldsFragment
+      }
+    }
+    footerMenuItems: menuItems(where: {location:$footerLocation}, first: 40) {
+      nodes {
+        ...NcFooterMenuFieldsFragment
+      }
+    }
+  }
+`)
+
+export default Component
