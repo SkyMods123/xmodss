@@ -11,7 +11,6 @@ import { PostDataFragmentType } from "@/data/types";
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
-    postDatabaseId: number;
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabaseId, posts }) => {
@@ -196,19 +195,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
-                                        </div>
-                                        <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
-                                            <div className="container">
-                                                <div>
-                                                    <div
-                                                        className="mb-10 text-neutral-900 dark:text-neutral-50"
-                                                        desc=""
-                                                    >
-                                                        Related posts
-                                                    </div>
-                                                    <SectionSliderPosts postCardName="card7" posts={posts || []} />
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
