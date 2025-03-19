@@ -12,7 +12,6 @@ export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
     postDatabaseId: number;
-    posts: PostDataFragmentType[] | null;
 }
 
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabaseId, posts }) => {
@@ -203,6 +202,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                                 <div>
                                                     <div
                                                         className="mb-10 text-neutral-900 dark:text-neutral-50"
+                                                        desc=""
                                                     >
                                                         Related posts
                                                     </div>
