@@ -12,27 +12,25 @@ export interface SingleType1Props {
     showRightSidebar?: boolean;
 }
 
-const SingleType1: FC<SingleType1Props> = (props) => {
-    const { post, showRightSidebar } = props;
+const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
         content,
         date,
         author,
         databaseId,
+        posts,
         excerpt,
         featuredImage,
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
+
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
-    const _post = props.data?.post || {}
-    
-    const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
 
     return (
         <>
@@ -195,7 +193,7 @@ const SingleType1: FC<SingleType1Props> = (props) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={_relatedPosts} /> {/* Include SingleRelatedPosts here */}
+                                        <SingleRelatedPosts postDatabaseId={databaseId} posts={posts || []} /> {/* Include SingleRelatedPosts here */}
                                     </div>
                                 </div>
                             </aside>
