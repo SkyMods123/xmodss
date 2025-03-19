@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
-import Tag from '@/components/Tag/Tag';
 import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-
 import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
 import { PostDataFragmentType } from "@/data/types";
 
@@ -151,7 +149,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <button
-                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-now[...]
+                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-nowrap"
                                                         >
                                                             <span className="flex items-center gap-2">
                                                                 <svg
@@ -203,12 +201,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, postDatabas
                                         <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
                                             <div className="container">
                                                 <div>
-                                                    <div
+                                                    <header
                                                         className="mb-10 text-neutral-900 dark:text-neutral-50"
                                                         desc=""
                                                     >
                                                         Related posts
-                                                    </div>
+                                                    </header>
                                                     <SectionSliderPosts postCardName="card7" posts={posts || []} />
                                                 </div>
                                             </div>
