@@ -43,7 +43,7 @@ const DynamicSingleType5 = dynamic(
 )
 
 // Eksportovana funkcija za dobijanje related posts
-export const getRelatedPosts = (data) => {
+export const getRelatedPosts = (data: GetPostSiglePageQuery) => {
   return (data?.posts?.nodes as TPostCard[]) || [];
 }
 
