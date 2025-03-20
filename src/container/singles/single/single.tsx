@@ -10,7 +10,7 @@ import { FC } from 'react'
 import Card2, { TPostCard } from '@/components/Card2/Card2'
 import Card6 from '@/components/Card6/Card6'
 
-export interface SectionMagazine1Props {
+export interface SingleType1Props {
 	posts: TPostCard[]
 	className?: string
 }
