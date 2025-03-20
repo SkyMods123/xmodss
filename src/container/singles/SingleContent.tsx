@@ -18,7 +18,7 @@ import { clsx } from 'clsx'
 import { useMusicPlayer } from '@/hooks/useMusicPlayer'
 import { flatListToHierarchical } from '@faustwp/core'
 import MyWordPressBlockViewer from '@/components/MyWordPressBlockViewer'
-import { ContentBlock } from '@/components/MyWordPressBlockViewer'
+import { ContentBlock } from '@faustwp/blocks/dist/mjs/components/WordPressBlocksViewer'
 
 export interface SingleContentProps {
 	post: GetPostSiglePageQuery['post']
