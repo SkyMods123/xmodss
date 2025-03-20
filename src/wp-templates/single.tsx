@@ -200,6 +200,13 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 									<Sidebar categories={_top10Categories} />
 								</div>
 							</div>
+							<div className="container my-10 flex flex-col lg:flex-row">
+								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
+									<DynamicSingleRelatedPosts
+										posts={_relatedPosts}
+										postDatabaseId={databaseId}
+								</div>
+							</div>
 
 							{/* RELATED POSTS */}
 							<DynamicSingleRelatedPosts
