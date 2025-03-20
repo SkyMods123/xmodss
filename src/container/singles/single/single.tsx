@@ -15,6 +15,9 @@ export interface SingleType1Props {
     showRightSidebar?: boolean;
 }
 
+const SingleType1 = (props: { data: GetPostSiglePageQuery }) => {
+        const relatedPosts = getRelatedPosts(props.data);
+
 const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const {
         title,
@@ -32,9 +35,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-    
-    const SingleType1 = (props: { data: GetPostSiglePageQuery }) => {
-        const relatedPosts = getRelatedPosts(props.data);
 
     return (
         <>
