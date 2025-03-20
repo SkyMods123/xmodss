@@ -6,7 +6,7 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SectionMagazine1Props from '../components/Sections/SectionMagazine1';
+import SectionMagazine2 from '../components/Sections/SectionMagazine2'
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -192,7 +192,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SectionMagazine1 />
+                                        <SectionMagazine2 posts={posts} />
                                     </div>
                                 </div>
                             </aside>
