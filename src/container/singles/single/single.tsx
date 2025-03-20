@@ -21,7 +21,7 @@ export interface SingleType1Props {
     showRightSidebar?: boolean;
 }
 
-const SingleType1: FC<SingleType1Props> = ({ props, showRightSidebar }) => {
+const SingleType1: FC<SingleType1Props> = ({ showRightSidebar }) => {
     const {
         title,
         content,
@@ -39,9 +39,9 @@ const SingleType1: FC<SingleType1Props> = ({ props, showRightSidebar }) => {
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
 
-    const post = props.data?.post || {}
+    const post = post || {}
 
-	const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
+    const _relatedPosts = (posts as TPostCard[]) || []
 
     return (
         <>
