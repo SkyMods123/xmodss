@@ -42,6 +42,11 @@ const DynamicSingleType5 = dynamic(
 	() => import('../container/singles/single-5/single-5'),
 )
 
+// Eksportovana funkcija za dobijanje related posts
+export const getRelatedPosts = (data) => {
+  return (data?.posts?.nodes as TPostCard[]) || [];
+}
+
 const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 	//  LOADING ----------
 	if (props.loading) {
@@ -70,9 +75,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 	const _post = props.data?.post || {}
 
-	// console.log('🚀 ~ file: single.tsx ~ line 68 ~ Component ~ _post', _post)
-
-	const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
+	const _relatedPosts = getRelatedPosts(props.data);
 	const _top10Categories =
 		(props.data?.categories?.nodes as TCategoryCardFull[]) || []
 
@@ -85,11 +88,9 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 		excerpt,
 	} = getPostDataFromPostFragment(_post)
 
-	//
 	const {} = useGetPostsNcmazMetaByIds({
 		posts: (IS_PREVIEW ? [] : [_post]) as TPostCard[],
 	})
-	//
 
 	// Query update post view count
 	const [handleUpdateReactionCount, { reset }] = useMutation(
