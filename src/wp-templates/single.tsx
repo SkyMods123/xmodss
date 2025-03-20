@@ -186,6 +186,11 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 				generalSettings={
 					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 				}
+				{/* RELATED POSTS */}
+				<DynamicSingleRelatedPosts
+					posts={_relatedPosts}
+					postDatabaseId={databaseId}
+				/>
 			>
 				{ncPostMetaData?.showRightSidebar ? (
 					<div>
