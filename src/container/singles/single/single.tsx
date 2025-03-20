@@ -9,7 +9,6 @@ import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import { FC } from 'react'
 import Card2, { TPostCard } from '@/components/Card2/Card2'
 import Card6 from '@/components/Card6/Card6'
-import Empty from '../Empty'
 
 export interface SingleType1Props {
   post: FragmentTypePostFullFields;
@@ -198,7 +197,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, posts, clas
                       <h2>Similar Scripts</h2>
                       <div className={`nc-SectionMagazine1 ${className}`}>
                         {!posts.length ? (
-                          <Empty />
                         ) : (
                           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:gap-7">
                             {posts[0] && <Card2 size="large" post={posts[0]} />}
