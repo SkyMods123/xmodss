@@ -48,9 +48,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 		return <>Loading...</>
 	}
 
-	const router = useRouter()
-	const IS_PREVIEW = router.pathname === '/preview'
-
 	// START ----------
 	const { isReady, isAuthenticated } = useSelector(
 		(state: RootState) => state.viewer.authorizedUser,
@@ -87,7 +84,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 	//
 	const {} = useGetPostsNcmazMetaByIds({
-		posts: (IS_PREVIEW ? [] : [_post]) as TPostCard[],
+		posts: [_post] as TPostCard[],
 	})
 	//
 
@@ -103,7 +100,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 
 	// update view count
 	useEffect(() => {
-		if (!isReady || IS_PREVIEW || !isUpdateViewCount) {
+		if (!isReady || !isUpdateViewCount) {
 			return
 		}
 
@@ -138,7 +135,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 		isReady,
 		isAuthenticated,
 		viewer?.databaseId,
-		IS_PREVIEW,
 		isUpdateViewCount,
 	])
 
