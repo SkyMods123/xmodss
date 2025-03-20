@@ -41,7 +41,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const post = post || {}
 
-    const _relatedPosts = (posts as TPostCard[]) || []
+    const _relatedPosts = (post as TPostCard[]) || []
 
     return (
         <>
