@@ -1,30 +1,36 @@
-import dynamic from 'next/dynamic'
-import { TPostCard } from '@/components/Card2/Card2'
-import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/stores/store'
-import { useEffect, useState } from 'react'
-import { useMutation } from '@apollo/client'
-import { NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT } from '@/fragments/mutations'
-import PageLayout from '@/container/PageLayout'
+'use client'
+
+import { FC, forwardRef, useEffect, useRef, useState } from 'react'
+import Tag from '@/components/Tag/Tag'
+import SingleAuthor from './SingleAuthor'
+import useIntersectionObserver from '@/hooks/useIntersectionObserver'
+import PostCardLikeAction from '@/components/PostCardLikeAction/PostCardLikeAction'
+import PostCardCommentBtn from '@/components/PostCardCommentBtn/PostCardCommentBtn'
+import { ArrowUpIcon } from '@heroicons/react/24/solid'
+import { GetPostSiglePageQuery } from '@/__generated__/graphql'
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import NcBookmark from '@/components/NcBookmark/NcBookmark'
+import SingleCommentWrap from './SingleCommentWrap'
+import { Transition } from '@headlessui/react'
+import TableContentAnchor from './TableContentAnchor'
+import Alert from '@/components/Alert'
+import { clsx } from 'clsx'
+import { useMusicPlayer } from '@/hooks/useMusicPlayer'
+import { flatListToHierarchical } from '@faustwp/core'
+import MyWordPressBlockViewer from '@/components/MyWordPressBlockViewer'
+import { ContentBlock } from '@faustwp/blocks/dist/mjs/components/WordPressBlocksViewer'
 
 const DynamicSingleRelatedPosts = dynamic(
-    () => import('@/container/singles/SingleRelatedPosts'),
+    () => import('@/container/singles/SingleRelatedPosts')
 )
 
-
-    const _post = props.data?.post || {}
-
-    const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
-
-    const {
-        databaseId,
-    } = getPostDataFromPostFragment(_post)
+const SingleType1 = ({ data, isAuthenticated, handleUpdateReactionCount, isReady }) => {
+    const _post = data?.post || {}
+    const _relatedPosts = (data?.posts?.nodes as TPostCard[]) || []
+    const { databaseId } = getPostDataFromPostFragment(_post)
 
     // update view count
     useEffect(() => {
-
         // user chua dang nhap, va update view count voi user la null
         if (isAuthenticated === false) {
             handleUpdateReactionCount({
@@ -37,7 +43,6 @@ const DynamicSingleRelatedPosts = dynamic(
             return
         }
 
-
         // khi viewer fetch xong, luc nay viewer da co databaseId, va se update view count voi user la viewer
         handleUpdateReactionCount({
             variables: {
@@ -45,15 +50,11 @@ const DynamicSingleRelatedPosts = dynamic(
                 number: NcmazFcUserReactionPostNumberUpdateEnum.Add_1,
             },
         })
-    }, [
-        databaseId,
-        isReady,
-    ])
+    }, [databaseId, isReady])
 
     return (
         <>
-            <PageLayout
-            >
+            <PageLayout>
                 <DynamicSingleRelatedPosts
                     posts={_relatedPosts}
                     postDatabaseId={databaseId}
@@ -62,4 +63,5 @@ const DynamicSingleRelatedPosts = dynamic(
         </>
     )
 }
+
 export default SingleType1
