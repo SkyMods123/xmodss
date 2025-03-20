@@ -16,6 +16,23 @@ export interface SingleType1Props {
 }
 
 const Components: FC<FC<SingleType1Props>> = ({ post, posts, className = '' }) => {
+	const {
+        	title,
+        	content,
+        	date,
+        	author,
+        	databaseId,
+        	tags,
+        	excerpt,
+        	featuredImage,
+        	ncPostMetaData,
+    	} = getPostDataFromPostFragment(post || {});
+
+    	const hasFeaturedImage = !!featuredImage?.sourceUrl;
+
+    	const imgWidth = featuredImage?.mediaDetails?.width || 1000;
+    	const imgHeight = featuredImage?.mediaDetails?.height || 750;
+	
 	return (
 		<div className={`nc-SectionMagazine1 ${className}`}>
 			{!posts.length ? (
