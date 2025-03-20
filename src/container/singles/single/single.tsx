@@ -21,7 +21,7 @@ export interface SingleType1Props {
     showRightSidebar?: boolean;
 }
 
-const SingleType1: FC<SingleType1Props> = ({ props, post, showRightSidebar }) => {
+const SingleType1: FC<SingleType1Props> = ({ props, showRightSidebar }) => {
     const {
         title,
         content,
