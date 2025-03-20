@@ -1,114 +1,159 @@
 import Head from 'next/head';
 
-const SinglePage = ()=>{
-    return(
-        <>
-            <Head>
-                <title>Plitch Trainer</title>
-                <meta name="description" content="Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
-                <meta name="keywords" content="Plitch Trainer, cheat provider, game mods, gaming cheats, game trainers" />
-                {/* <meta name="author" content="Your Name" /> */}
-                <meta property="og:title" content="Plitch Trainer" />
-                <meta property="og:description" content="Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
-                {/* <meta property="og:image" content="/images/noFilter.webp" /> */}
-                {/* <meta property="og:url" content="https://your-website-url.com/plitch-trainer" /> */}
-                {/* <meta name="twitter:card" content="summary_large_image" /> */}
-                <meta name="twitter:title" content="Plitch Trainer" />
-                <meta name="twitter:description" content="Plitch Trainer is a cheat supplier/provider for many games with multiple mods, offering both premium and free versions." />
-                {/* <meta name="twitter:image" content="/images/noFilter.webp" /> */}
-            </Head>
-            <div className="bg-black min-h-screen flex flex-col lg:flex-row lg justify-center p-6 px-0 lg:px-12">
-                <div className="basis-8/12 shadow-lg rounded-lg p-6">
-                    <div className="bg-[#161b22] border border-[#2f353c] rounded-sm p-3">
-                        {/* Header */}
-                        <div className="flex justify-between items-center">
-                            <h2 className="text-white text-xl font-semibold">Plitch Trainer</h2>
-                            <div className="flex items-center bg-[#202731cc] text-[#d4dae3] text-lg px-3 py-2 rounded-full gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                <span>2,569 views</span>
+const SinglePage = () => {
+  return (
+    <body className="bg-background __className_3a0388 min-h-screen">
+      <div className="coverimg absolute -top-[380px] hidden h-[50rem] w-full opacity-30 blur-[2px] md:block">
+        <img
+          alt="background coverart"
+          fetchPriority="high"
+          loading="eager"
+          width="135"
+          height="160"
+          decoding="async"
+          data-nimg="1"
+          className="h-[800px] w-full object-cover object-top"
+          style={{ color: 'transparent' }}
+        />
+      </div>
+      <div className="absolute -top-[370px] hidden h-[50rem] w-full bg-gradient-to-b from-gray-200/40 to-white dark:from-muted/20 dark:to-background md:block"></div>
+      <div className="min-h-screen bg-background">
+        <main className="container px-4 py-6 lg:px-14">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="z-10 space-y-6 lg:col-span-2">
+              <header className="!mt-0">
+                <div className="rounded-lg border text-card-foreground shadow-sm bg-card/70 backdrop-blur-sm">
+                  <div className="flex flex-col space-y-1.5 p-6 pb-4">
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <img
+                            alt="Game icon"
+                            loading="lazy"
+                            width="32"
+                            height="32"
+                            decoding="async"
+                            data-nimg="1"
+                            className="flex-shrink-0 rounded-lg"
+                            style={{ color: 'transparent' }}
+                          />
+                          <div className="min-w-0">
+                            <div className="text-2xl font-semibold leading-none tracking-tight">
+                              <h1 className="truncate text-xl font-bold sm:text-2xl">ESP (Free)</h1>
                             </div>
+                          </div>
                         </div>
-                        <div className="flex flex-col lg:flex-row justify-between gap-5">
-                            <div className="basis-full lg:basis-7/12 mt-4">
-                                <img 
-                                    src="/images/noFilter.webp" 
-                                    alt="Game Thumbnail" 
-                                    className="w-full rounded-lg"
-                                />
-                            </div>
-                            <div className="basis-full lg:basis-5/12 flex flex-col justify-between mt-3">
-                                <div className="text-white">
-                                    <div className="flex justify-between">
-                                        <div>
-                                            <h1>No6No6No7Verified</h1>
-                                        </div>
-                                        <div className="flex gap-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6 cursor-pointer"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
-                                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6 cursor-pointer"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg> */}
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-7 mt-3">
-                                        <span className="flex items-center bg-[#202731cc] gap-3 px-5 py-3 rounded-lg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-thumbs-up null"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
-                                            <span className="text-xl font-medium">0</span>
-                                        </span>
-                                        <span className="flex items-center bg-[#202731cc] gap-3 px-5 py-3 rounded-lg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-thumbs-down null"><path d="M17 14V2"></path><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path></svg>                                        
-                                            <span className="text-xl font-medium">0</span>
-                                        </span>
-                                    </div>
-                                </div>
-                            
-                                <div className="mt-7">
-                                    <button className="flex justify-center items-center gap-2 border border-[#4c5661] text-white text-lg font-semibold w-full py-3 rounded-xl">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-copy mr-2 h-4 w-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                                        <span>Copy Script</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Description */}
-                    <div className="bg-[#161b22] text-white border border-[#2f353c] rounded-sm p-3 mt-4">
-                        <h3 className="text-3xl font-semibold p-3">Description</h3>
-                        <p className="font-bold text-lg mt-2 pl-3">
-                            Plitch Trainer is a cheat supplier/provider for many games with multiple mods. This has a premium version alongside a free version.
-                        </p>
-                        <div className="text-xl pl-3 pt-5">
-                            <h3>Features:</h3>
-                            <ul className="list-disc pl-7 pt-2">
-                                <li>view description</li>
-                            </ul>
-                        </div>
-                        {/* Discord Link */}
-                        <div className="mt-4">
-                        <a href="#" className="bg-[#0d1116] text-[#818cf8] text-lg px-4 py-2 rounded-lg inline-block">
-                            Join No6No6No7's Discord Server
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <a
+                          aria-label="Search for game"
+                          className="hover:text-green-500 hover:underline"
+                          href="https://rscripts.net/scripts?q=Dead%20Rails%20Alpha"
+                        >
+                          Dead Rails Alpha
                         </a>
+                        <span>•</span>
+                        <div className="flex items-center gap-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            className="lucide lucide-clock h-3.5 w-3.5"
+                          >
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                          </svg>
+                          2 days ago
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div className="basis-4/12 bg-[#161b22] border border-[#2f353c] rounded-sm p-7 mt-5 mx-6">
-                    <h1 className="text-white font-bold text-3xl pb-7">Similar Scripts</h1>
-                    <div className="flex gap-5">
+                  </div>
+                  <div className="p-6 pt-0">
+                    <div className="flex flex-col gap-6 lg:flex-row">
+                      <div className="group relative w-full overflow-hidden rounded-lg lg:w-7/12">
                         <img
-                            height={70}
-                            width={130}
-                            src="/images/espm.webp"
-                            className="rounded-2xl"
+                          alt="Script preview thumbnail"
+                          fetchPriority="high"
+                          loading="eager"
+                          width="640"
+                          height="360"
+                          decoding="async"
+                          data-nimg="1"
+                          className="aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                          style={{ color: 'transparent' }}
                         />
-                        <div>
-                            <h2 className="text-white text-lg font-bold">item magnet</h2>
-                            <h3 className="text-[#a3a3a3] font-semibold">Dead Rails [Alpha]</h3>
-                            <h4 className="text-[#a3a3a3] font-semibold">3 weeks ago</h4>
+                      </div>
+                      <div className="flex flex-col justify-between gap-4 lg:w-5/12">
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <a className="flex items-center gap-2" href="https://rscripts.net/@0x256">
+                              <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                                <span className="flex h-full w-full items-center justify-center rounded-full bg-muted">0x</span>
+                              </span>
+                              <span className="flex cursor-pointer items-center gap-1 text-base font-medium text-foreground hover:text-primary">
+                                0x256
+                              </span>
+                            </a>
+                          </div>
                         </div>
-
+                        <div className="grid grid-cols-2 gap-3">
+                          <button
+                            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:text-accent-foreground h-10 px-4 py-2 col-span-2 transition-colors duration-200 hover:bg-accent"
+                          >
+                            <span className="flex items-center gap-2">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                className="lucide lucide-copy mr-2 h-4 w-4"
+                              >
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2 2"></path>
+                              </svg>
+                              Download
+                            </span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </header>
             </div>
-            
-        </>
-        
-    )
-}
-export default SinglePage
+            <div className="w-full flex-col rounded border bg-card/40 pb-2 block sm:hidden" id="advert1">
+              <div className="flex w-full items-center justify-between px-2 py-2 text-left">
+                <strong className="block text-[11px] text-foreground/50">ADVERTISEMENT</strong>
+              </div>
+              <div className="mx-auto flex items-center justify-center min-h-[250px]">
+                <div data-fuse="23117773104"></div>
+              </div>
+            </div>
+            <aside className="script-similar-scripts lg:col-span-1">
+              <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="flex flex-col space-y-1.5 p-6 pb-3">
+                  <div className="text-2xl font-semibold leading-none tracking-tight">
+                    <h2>Similar Scripts</h2>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </body>
+  );
+};
+
+export default SinglePage;
