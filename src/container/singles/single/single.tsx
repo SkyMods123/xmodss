@@ -195,9 +195,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, posts, clas
                   <div className="flex flex-col space-y-1.5 p-6 pb-3">
                     <div className="text-2xl font-semibold leading-none tracking-tight">
                       <h2>Similar Scripts</h2>
-                      <div className={`nc-SectionMagazine1 ${className}`}>
-                        {!posts.length ? (
-                        ) : (
                           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:gap-7">
                             {posts[0] && <Card2 size="large" post={posts[0]} />}
                             <div className="grid gap-6 2xl:gap-7">
@@ -213,7 +210,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar, posts, clas
                                 <Card6 key={item.databaseId} post={item} />
                               ))}
                           </div>
-                        )}
                       </div>
                     </div>
                   </div>
