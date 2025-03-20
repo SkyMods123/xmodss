@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { gql } from '../__generated__'
 import { NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT } from '@/fragments/mutations'
 import {
     GetPostSiglePageQuery,
@@ -121,41 +120,4 @@ const SingleType1: FaustTemplate<GetPostSiglePageQuery> = (props) => {
         </>
     )
 }
-
-SingleType1.variables = ({ databaseId }, ctx) => {
-    return {
-        databaseId,
-        post_databaseId: Number(databaseId || 0),
-        asPreview: ctx?.asPreview,
-        headerLocation: PRIMARY_LOCATION,
-        footerLocation: FOOTER_LOCATION,
-    }
-}
-
-SingleType1.query = gql(`
-  query GetPostSiglePage($databaseId: ID!, $post_databaseId: Int,$asPreview: Boolean = false, $headerLocation: MenuLocationEnum!, $footerLocation: MenuLocationEnum!) {
-    post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
-		...NcmazFcPostFullVsEditorBlocksNoContentFields
-    }
-    posts(where: {isRelatedOfPostId:$post_databaseId}) {
-      nodes {
-      ...PostCardFieldsNOTNcmazMEDIA
-      }
-    }
-    generalSettings {
-      ...NcgeneralSettingsFieldsFragment
-    }
-    primaryMenuItems: menuItems(where: {location:$headerLocation}, first: 80) {
-      nodes {
-        ...NcPrimaryMenuFieldsFragment
-      }
-    }
-    footerMenuItems: menuItems(where: {location:$footerLocation}, first: 40) {
-      nodes {
-        ...NcFooterMenuFieldsFragment
-      }
-    }
-  }
-`)
-
 export default SingleType1
