@@ -6,16 +6,27 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
+import dynamic from 'next/dynamic'
+import useGetPostsNcmazMetaByIds from '@/hooks/useGetPostsNcmazMetaByIds'
+import { TPostCard } from '@/components/Card2/Card2'
+import { useRouter } from 'next/router'
+import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
+
+const DynamicSingleRelatedPosts = dynamic(
+	() => import('@/container/singles/SingleRelatedPosts'),
+)
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
 }
 
-const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
+const SingleType1: FC<SingleType1Props> = ({ props, post, showRightSidebar }) => {
     const {
         title,
         content,
+        ncPostMetaData,
+		postFormats,
         date,
         author,
         databaseId,
@@ -29,6 +40,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
+
+    const post = props.data?.post || {}
+
+	const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
 
     return (
         <>
@@ -191,19 +206,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        {tags?.nodes?.length ? (
-                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
-                                                {tags.nodes.map((item) => (
-                                                    <Tag
-                                                        hideCount
-                                                        key={item.databaseId}
-                                                        name={'#' + (item.name || '')}
-                                                        uri={item.uri || ''}
-                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
-                                                    />
-                                                ))}
-                                            </div>
-                                        ) : null}
+                                        <DynamicSingleRelatedPosts
+								            posts={_relatedPosts}
+								            postDatabaseId={databaseId}
+							            />
                                     </div>
                                 </div>
                             </aside>
