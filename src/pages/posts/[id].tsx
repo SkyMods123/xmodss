@@ -1,13 +1,4 @@
-import { TPostCard } from '@/components/Card2/Card2'
-import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
-import { MagazineLayoutType } from '@/wp-blocks/NcmazFaustBlockMagazineClient'
-import { TermBlockLayoutType } from '@/wp-blocks/NcmazFaustBlockTerms'
-import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head';
-
-const DynamicSectionGridPosts = dynamic(
-	() => import('../components/Sections/SectionGridPosts'),
-)
 
 const SinglePage = () => {
   return (
@@ -154,8 +145,7 @@ const SinglePage = () => {
                 <div className="flex flex-col space-y-1.5 p-6 pb-3">
                   <div className="text-2xl font-semibold leading-none tracking-tight">
                     <h2>Similar Scripts</h2>
-                  </div>			
-			<DynamicSectionGridPosts posts={posts} postCardName="card9" />
+                  </div>
                 </div>
               </div>
             </aside>
