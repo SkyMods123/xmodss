@@ -15,7 +15,7 @@ export interface SingleType1Props {
 	className?: string
 }
 
-const Components: FC<FC<SingleType1Props>> = ({ posts, className = '' }) => {
+const Components: FC<FC<SingleType1Props>> = ({ post, posts, className = '' }) => {
 	return (
 		<div className={`nc-SectionMagazine1 ${className}`}>
 			{!posts.length ? (
