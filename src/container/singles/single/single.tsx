@@ -6,8 +6,9 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import { getRelatedPosts } from '../path/to/single';
+import { getRelatedPosts } from '../wp-templates/single';
 import { GetPostSiglePageQuery } from '../__generated__/graphql';
+import { TPostCard } from '@/components/Card2/Card2';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -32,7 +33,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
     
-    const ExampleComponent = (props: { data: GetPostSiglePageQuery }) => {
+    const SingleType1 = (props: { data: GetPostSiglePageQuery }) => {
         const relatedPosts = getRelatedPosts(props.data);
 
     return (
