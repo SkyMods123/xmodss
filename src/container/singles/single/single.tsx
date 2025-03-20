@@ -1,13 +1,3 @@
-import React, { FC } from 'react';
-import Head from 'next/head';
-import Tag from '@/components/Tag/Tag'
-import NcImage from '@/components/NcImage/NcImage';
-import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
-import SingleHeader from '../SingleHeader';
-import { FragmentTypePostFullFields } from '@/container/type';
-import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import dynamic from 'next/dynamic'
-import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
 import { gql } from '../__generated__'
 import {
 	GetPostSiglePageQuery,
@@ -32,35 +22,27 @@ import useGetPostsNcmazMetaByIds from '@/hooks/useGetPostsNcmazMetaByIds'
 import { TPostCard } from '@/components/Card2/Card2'
 import { useRouter } from 'next/router'
 import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
-
+import SingleTypeAudio from '@/container/singles/single-audio/single-audio'
+import SingleTypeVideo from '@/container/singles/single-video/single-video'
+import SingleTypeGallery from '@/container/singles/single-gallery/single-gallery'
 
 const DynamicSingleRelatedPosts = dynamic(
 	() => import('@/container/singles/SingleRelatedPosts'),
 )
+const DynamicSingleType2 = dynamic(
+	() => import('../container/singles/single-2/single-2'),
+)
+const DynamicSingleType3 = dynamic(
+	() => import('../container/singles/single-3/single-3'),
+)
+const DynamicSingleType4 = dynamic(
+	() => import('../container/singles/single-4/single-4'),
+)
+const DynamicSingleType5 = dynamic(
+	() => import('../container/singles/single-5/single-5'),
+)
 
-export interface SingleType1Props {
-    post: FragmentTypePostFullFields;
-    showRightSidebar?: boolean;
-}
-
-const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
-    const {
-        title,
-        content,
-        date,
-        author,
-        databaseId,
-        tags,
-        excerpt,
-        featuredImage,
-    } = getPostDataFromPostFragment(post || {});
-
-    const hasFeaturedImage = !!featuredImage?.sourceUrl;
-
-    const imgWidth = featuredImage?.mediaDetails?.width || 1000;
-    const imgHeight = featuredImage?.mediaDetails?.height || 750;
-	
-	const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
+const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 	//  LOADING ----------
 	if (props.loading) {
 		return <>Loading...</>
@@ -159,6 +141,167 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 		IS_PREVIEW,
 		isUpdateViewCount,
 	])
+
+	const renderHeaderType = () => {
+		const pData = { ...(_post || {}) }
+
+		if (postFormats === 'audio') {
+			return <SingleTypeAudio post={pData} />
+		}
+		if (postFormats === 'video') {
+			return <SingleTypeVideo post={pData} />
+		}
+		if (postFormats === 'gallery') {
+			return <SingleTypeGallery post={pData} />
+		}
+
+		if (ncPostMetaData?.template?.[0] === 'style2') {
+			return <DynamicSingleType2 post={pData} />
+		}
+		if (ncPostMetaData?.template?.[0] === 'style3') {
+			return <DynamicSingleType3 post={pData} />
+		}
+		if (ncPostMetaData?.template?.[0] === 'style4') {
+			return <DynamicSingleType4 post={pData} />
+		}
+		if (ncPostMetaData?.template?.[0] === 'style5') {
+			return <DynamicSingleType5 post={pData} />
+		}
+		return (
+			<SingleType1
+				showRightSidebar={!!ncPostMetaData?.showRightSidebar}
+				post={pData}
+			/>
+		)
+	}
+
+	return (
+		<>
+			<PageLayout
+				headerMenuItems={props.data?.primaryMenuItems?.nodes || []}
+				footerMenuItems={props.data?.footerMenuItems?.nodes || []}
+				pageFeaturedImageUrl={featuredImage?.sourceUrl}
+				pageTitle={title}
+				pageDescription={excerpt || ''}
+				generalSettings={
+					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
+				}
+			>
+				{/* RELATED POSTS */}
+				<DynamicSingleRelatedPosts
+					posts={_relatedPosts}
+					postDatabaseId={databaseId}
+				/>
+				{ncPostMetaData?.showRightSidebar ? (
+					<div>
+						<div className={`relative`}>
+							{renderHeaderType()}
+							
+							{/* RELATED POSTS */}
+							<DynamicSingleRelatedPosts
+								posts={_relatedPosts}
+								postDatabaseId={databaseId}
+							/>
+						</div>
+					</div>
+				) : (
+					<div>
+						{renderHeaderType()}
+
+						<div className="container mt-10">
+							{/* SINGLE MAIN CONTENT */}
+							<SingleContent post={_post} />
+						</div>
+
+						{/* RELATED POSTS */}
+						<DynamicSingleRelatedPosts
+							posts={_relatedPosts}
+							postDatabaseId={databaseId}
+						/>
+					</div>
+				)}
+			</PageLayout>
+		</>
+	)
+}
+
+Component.variables = ({ databaseId }, ctx) => {
+	return {
+		databaseId,
+		post_databaseId: Number(databaseId || 0),
+		asPreview: ctx?.asPreview,
+		headerLocation: PRIMARY_LOCATION,
+		footerLocation: FOOTER_LOCATION,
+	}
+}
+
+Component.query = gql(`
+  query GetPostSiglePage($databaseId: ID!, $post_databaseId: Int,$asPreview: Boolean = false, $headerLocation: MenuLocationEnum!, $footerLocation: MenuLocationEnum!) {
+    post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+		...NcmazFcPostFullVsEditorBlocksNoContentFields
+    }
+    posts(where: {isRelatedOfPostId:$post_databaseId}) {
+      nodes {
+      ...PostCardFieldsNOTNcmazMEDIA
+      }
+    }
+    categories(first:10, where: { orderby: COUNT, order: DESC }) {
+      nodes {
+        ...NcmazFcCategoryFullFieldsFragment
+      }
+    }
+    generalSettings {
+      ...NcgeneralSettingsFieldsFragment
+    }
+    primaryMenuItems: menuItems(where: {location:$headerLocation}, first: 80) {
+      nodes {
+        ...NcPrimaryMenuFieldsFragment
+      }
+    }
+    footerMenuItems: menuItems(where: {location:$footerLocation}, first: 40) {
+      nodes {
+        ...NcFooterMenuFieldsFragment
+      }
+    }
+  }
+`)
+
+export default Component
+
+
+
+import React, { FC } from 'react';
+import Head from 'next/head';
+import Tag from '@/components/Tag/Tag'
+import NcImage from '@/components/NcImage/NcImage';
+import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
+import SingleHeader from '../SingleHeader';
+import { FragmentTypePostFullFields } from '@/container/type';
+import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
+
+export interface SingleType1Props {
+    post: FragmentTypePostFullFields;
+    showRightSidebar?: boolean;
+}
+
+const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
+    const {
+        title,
+        content,
+        date,
+        author,
+        databaseId,
+        tags,
+        excerpt,
+        featuredImage,
+        ncPostMetaData,
+    } = getPostDataFromPostFragment(post || {});
+
+    const hasFeaturedImage = !!featuredImage?.sourceUrl;
+
+    const imgWidth = featuredImage?.mediaDetails?.width || 1000;
+    const imgHeight = featuredImage?.mediaDetails?.height || 750;
+
     return (
         <>
             <Head>
@@ -320,10 +463,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <DynamicSingleRelatedPosts
-								            posts={_relatedPosts}
-								            postDatabaseId={databaseId}
-							            />
+                                        {tags?.nodes?.length ? (
+                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
+                                                {tags.nodes.map((item) => (
+                                                    <Tag
+                                                        hideCount
+                                                        key={item.databaseId}
+                                                        name={'#' + (item.name || '')}
+                                                        uri={item.uri || ''}
+                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
+                                                    />
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </aside>
