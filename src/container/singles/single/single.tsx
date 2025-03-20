@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
+import { gql } from '../__generated__'
 import { NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT } from '@/fragments/mutations'
 import {
     GetPostSiglePageQuery,
