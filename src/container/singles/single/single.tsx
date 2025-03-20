@@ -7,6 +7,8 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import SectionMagazine2 from '../components/Sections/SectionMagazine2'
+import { NcmazFaustBlockMagazineFragmentFragment } from '../__generated__/graphql'
+import { WordPressBlock } from '@faustwp/blocks'
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
