@@ -15,7 +15,7 @@ export interface SingleType1Props {
 	className?: string
 }
 
-const Components: FC<FC<SingleType1Props>> = ({ post, posts, className = '' }) => {
+const SingleType1: FC<SingleType1Props> = ({ post, posts, className = '' }) => {
 	const {
         	title,
         	content,
