@@ -6,9 +6,8 @@ const page677 = ({ post, showRightSidebar, relatedPosts = [] }) => {
     return (
         <div className="container my-10">
             <div className="flex flex-col lg:flex-row">
-
-            {/* Sekcija sa povezanim postovima */}
-            <DynamicSingleRelatedPosts posts={relatedPosts} postDatabaseId={post.databaseId} />
+                <DynamicSingleRelatedPosts posts={relatedPosts} postDatabaseId={post.databaseId} />
+            </div>
         </div>
     );
 };
