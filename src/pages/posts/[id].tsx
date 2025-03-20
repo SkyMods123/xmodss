@@ -10,7 +10,6 @@ const DynamicSectionGridPosts = dynamic(
 )
 
 const SinglePage = () => {
-)
   return (
     <body className="bg-background __className_3a0388 min-h-screen">
       <div className="coverimg absolute -top-[380px] hidden h-[50rem] w-full opacity-30 blur-[2px] md:block">
