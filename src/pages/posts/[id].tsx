@@ -5,7 +5,12 @@ import { TermBlockLayoutType } from '@/wp-blocks/NcmazFaustBlockTerms'
 import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head';
 
+const DynamicSectionGridPosts = dynamic(
+	() => import('../components/Sections/SectionGridPosts'),
+)
+
 const SinglePage = () => {
+)
   return (
     <body className="bg-background __className_3a0388 min-h-screen">
       <div className="coverimg absolute -top-[380px] hidden h-[50rem] w-full opacity-30 blur-[2px] md:block">
