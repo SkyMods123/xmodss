@@ -6,8 +6,6 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SectionMagazine2 from '@/components/Sections/SectionMagazine2'
-import { WordPressBlock } from '@faustwp/blocks'
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -193,7 +191,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SectionMagazine2 posts={[post]}/>
+                                        {tags?.nodes?.length ? (
+                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
+                                                {tags.nodes.map((item) => (
+                                                    <Tag
+                                                        hideCount
+                                                        key={item.databaseId}
+                                                        name={'#' + (item.name || '')}
+                                                        uri={item.uri || ''}
+                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
+                                                    />
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </aside>
