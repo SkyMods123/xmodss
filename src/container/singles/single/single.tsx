@@ -6,6 +6,8 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
+import { getRelatedPosts } from '../path/to/single';
+import { GetPostSiglePageQuery } from '../__generated__/graphql';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -29,6 +31,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
+    
+    const ExampleComponent = (props: { data: GetPostSiglePageQuery }) => {
+        const relatedPosts = getRelatedPosts(props.data);
 
     return (
         <>
@@ -191,19 +196,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        {tags?.nodes?.length ? (
-                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
-                                                {tags.nodes.map((item) => (
-                                                    <Tag
-                                                        hideCount
-                                                        key={item.databaseId}
-                                                        name={'#' + (item.name || '')}
-                                                        uri={item.uri || ''}
-                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
-                                                    />
-                                                ))}
-                                            </div>
-                                        ) : null}
+                                        <DynamicSingleRelatedPosts
+								            posts={relatedPosts}
+								            postDatabaseId={databaseId}
+							            />
                                     </div>
                                 </div>
                             </aside>
