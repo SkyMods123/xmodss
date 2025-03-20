@@ -187,6 +187,11 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 					props.data?.generalSettings as NcgeneralSettingsFieldsFragmentFragment
 				}
 			>
+				<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
+					<DynamicSingleRelatedPosts
+						posts={_relatedPosts}
+						postDatabaseId={databaseId}
+				</div>
 				{ncPostMetaData?.showRightSidebar ? (
 					<div>
 						<div className={`relative`}>
@@ -199,11 +204,7 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 								<div className="mt-12 w-full lg:mt-0 lg:w-2/5 lg:ps-10 xl:w-1/3 xl:ps-0">
 									<Sidebar categories={_top10Categories} />
 								</div>
-								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-									<DynamicSingleRelatedPosts
-										posts={_relatedPosts}
-										postDatabaseId={databaseId}
-								</div>
+							
 							</div>
 
 							{/* RELATED POSTS */}
