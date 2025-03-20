@@ -6,14 +6,6 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SingleTypeGallery from '@/container/singles/single-gallery/single-gallery'
-import dynamic from 'next/dynamic'
-import useGetPostsNcmazMetaByIds from '@/hooks/useGetPostsNcmazMetaByIds'
-import { TPostCard } from '@/components/Card2/Card2'
-
-const DynamicSingleRelatedPosts = dynamic(
-	() => import('@/container/singles/SingleRelatedPosts'),
-)
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -37,8 +29,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-    const _relatedPosts = (post.data?.posts?.nodes as TPostCard[]) || [];
 
     return (
         <>
@@ -152,7 +142,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <button
-                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-now[...]
+                                                            className="inline-flex items-center transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:text-accent-foreground h-10 px-4 py-2 col-span-2 transition-colors duration-200 hover:bg-accent"
                                                         >
                                                             <span className="flex items-center gap-2">
                                                                 <svg
@@ -201,13 +191,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <div className={`relative`}>
-                                            <DynamicSingleRelatedPosts
-                                                posts={_relatedPosts}
-                                                postDatabaseId={databaseId}
-                                            />
-                                        </div>
-                                      </PageLayout>
+                                        {tags?.nodes?.length ? (
+                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
+                                                {tags.nodes.map((item) => (
+                                                    <Tag
+                                                        hideCount
+                                                        key={item.databaseId}
+                                                        name={'#' + (item.name || '')}
+                                                        uri={item.uri || ''}
+                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
+                                                    />
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </aside>
