@@ -196,7 +196,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div>
                                             d
                                             <h1>Ovo je nova stranica</h1>
-                                            <SingleRelatedPosts postDatabaseId={databaseId} posts={post} />
+                                            <SingleRelatedPosts postDatabaseId={databaseId}/>
                                         </div>
                                     </div>
                                 </div>
