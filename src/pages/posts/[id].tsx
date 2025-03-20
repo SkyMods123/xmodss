@@ -8,7 +8,7 @@ export interface SingleRelatedPostsProps3 {
   posts: PostDataFragmentType[] | null;
 }
 
-const SingleRelatedPosts3: FC<SingleRelatedPostsProps> = ({
+const SingleRelatedPosts3: FC<SingleRelatedPostsProps3> = ({
   postDatabaseId,
   posts,
 }) => {
