@@ -25,6 +25,11 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         excerpt,
         featuredImage,
         ncPostMetaData,
+        postDatabaseId,
+        posts,
+    }) => {
+        if (!posts?.length) {
+            return <div className="py-5" />;
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
