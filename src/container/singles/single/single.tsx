@@ -192,7 +192,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <SectionMagazine2 posts={posts} />
+                                        <SectionMagazine2 posts={post} />
                                     </div>
                                 </div>
                             </aside>
