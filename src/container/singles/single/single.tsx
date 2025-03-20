@@ -25,8 +25,6 @@ const SingleType1: FC<SingleType1Props> = ({ props, showRightSidebar }) => {
     const {
         title,
         content,
-        ncPostMetaData,
-		postFormats,
         date,
         author,
         databaseId,
