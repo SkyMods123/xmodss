@@ -25,8 +25,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         excerpt,
         featuredImage,
         ncPostMetaData,
-        postDatabaseId,
-        posts,
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
@@ -198,7 +196,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div>
                                             d
                                             <h1>Ovo je nova stranica</h1>
-                                            <SingleRelatedPosts postDatabaseId={1} posts={posts} />
+                                            <SingleRelatedPosts postDatabaseId={1} posts={post} />
                                         </div>
                                     </div>
                                 </div>
