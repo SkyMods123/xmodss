@@ -7,10 +7,32 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import dynamic from 'next/dynamic'
+import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
+import { gql } from '../__generated__'
+import {
+	GetPostSiglePageQuery,
+	NcgeneralSettingsFieldsFragmentFragment,
+	NcmazFcUserReactionPostActionEnum,
+	NcmazFcUserReactionPostNumberUpdateEnum,
+} from '../__generated__/graphql'
+import { FaustTemplate } from '@faustwp/core'
+import SingleContent from '@/container/singles/SingleContent'
+import SingleType1 from '@/container/singles/single/single'
+import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment'
+import { Sidebar } from '@/container/singles/Sidebar'
+import PageLayout from '@/container/PageLayout'
+import { FOOTER_LOCATION, PRIMARY_LOCATION } from '@/contains/menu'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
+import { NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT } from '@/fragments/mutations'
+import { useMutation } from '@apollo/client'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/stores/store'
 import useGetPostsNcmazMetaByIds from '@/hooks/useGetPostsNcmazMetaByIds'
 import { TPostCard } from '@/components/Card2/Card2'
 import { useRouter } from 'next/router'
 import { TCategoryCardFull } from '@/components/CardCategory1/CardCategory1'
+
 
 const DynamicSingleRelatedPosts = dynamic(
 	() => import('@/container/singles/SingleRelatedPosts'),
@@ -31,18 +53,112 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         tags,
         excerpt,
         featuredImage,
-        ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
+	
+	const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
+	//  LOADING ----------
+	if (props.loading) {
+		return <>Loading...</>
+	}
 
-    const post = post || {}
+	const router = useRouter()
+	const IS_PREVIEW = router.pathname === '/preview'
 
-    const _relatedPosts = (post as TPostCard[]) || []
+	// START ----------
+	const { isReady, isAuthenticated } = useSelector(
+		(state: RootState) => state.viewer.authorizedUser,
+	)
+	const { viewer } = useSelector((state: RootState) => state.viewer)
+	const [isUpdateViewCount, setIsUpdateViewCount] = useState(false)
 
+	useEffect(() => {
+		const timeOutUpdateViewCount = setTimeout(() => {
+			setIsUpdateViewCount(true)
+		}, 5000)
+
+		return () => {
+			clearTimeout(timeOutUpdateViewCount)
+		}
+	}, [])
+
+	const _post = props.data?.post || {}
+
+	// console.log('🚀 ~ file: single.tsx ~ line 68 ~ Component ~ _post', _post)
+
+	const _relatedPosts = (props.data?.posts?.nodes as TPostCard[]) || []
+	const _top10Categories =
+		(props.data?.categories?.nodes as TCategoryCardFull[]) || []
+
+	const {
+		title,
+		ncPostMetaData,
+		postFormats,
+		featuredImage,
+		databaseId,
+		excerpt,
+	} = getPostDataFromPostFragment(_post)
+
+	//
+	const {} = useGetPostsNcmazMetaByIds({
+		posts: (IS_PREVIEW ? [] : [_post]) as TPostCard[],
+	})
+	//
+
+	// Query update post view count
+	const [handleUpdateReactionCount, { reset }] = useMutation(
+		NC_MUTATION_UPDATE_USER_REACTION_POST_COUNT,
+		{
+			onCompleted: (data) => {
+				reset()
+			},
+		},
+	)
+
+	// update view count
+	useEffect(() => {
+		if (!isReady || IS_PREVIEW || !isUpdateViewCount) {
+			return
+		}
+
+		// user chua dang nhap, va update view count voi user la null
+		if (isAuthenticated === false) {
+			handleUpdateReactionCount({
+				variables: {
+					post_id: databaseId,
+					reaction: NcmazFcUserReactionPostActionEnum.View,
+					number: NcmazFcUserReactionPostNumberUpdateEnum.Add_1,
+				},
+			})
+			return
+		}
+
+		// user da dang nhap, va luc nay viewer dang fetch.
+		if (!viewer?.databaseId) {
+			return
+		}
+
+		// khi viewer fetch xong, luc nay viewer da co databaseId, va se update view count voi user la viewer
+		handleUpdateReactionCount({
+			variables: {
+				post_id: databaseId,
+				reaction: NcmazFcUserReactionPostActionEnum.View,
+				number: NcmazFcUserReactionPostNumberUpdateEnum.Add_1,
+				user_id: viewer?.databaseId,
+			},
+		})
+	}, [
+		databaseId,
+		isReady,
+		isAuthenticated,
+		viewer?.databaseId,
+		IS_PREVIEW,
+		isUpdateViewCount,
+	])
     return (
         <>
             <Head>
