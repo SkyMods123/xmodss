@@ -6,7 +6,7 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import SectionMagazine1 from '../components/Sections/SectionMagazine1';
+import SectionMagazine1Props from '../components/Sections/SectionMagazine1';
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
