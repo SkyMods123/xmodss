@@ -64,6 +64,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         skip: !databaseId
     });
 
+    const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
     // Hook za meta podatke
     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
