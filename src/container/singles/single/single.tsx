@@ -71,7 +71,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         posts: relatedPosts as TPostCard[]
     });
 
-    const descriptionNoHtmlTags = description?.replace(/<[^>]*>?/gm, "") || "";
+    const descriptionNoHtmlTags = excerpt?.replace(/<[^>]*>?/gm, "") || "";
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
