@@ -32,6 +32,7 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
+import Textarea from '@/components/Textarea/Textarea'
 
 interface Props {
 	isEditingPage?: boolean
@@ -44,6 +45,7 @@ interface Props {
 	defaultTags?: TagNodeShort[]
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
+	excerptText: string
 	//
 }
 
@@ -117,6 +119,41 @@ const CreateNewPostEditor: FC<Props> = ({
 	//
 	const [newUpdatedUri, setNewUpdatedUri] = useState('')
 	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
+
+	const [excerptText, setExcerptText] = useState(defaultData.excerptText)
+
+	const debounceGetExcerpt = debounce(function (e: string) {
+		setExcerptText(e)
+	}, 200)
+
+	const handleClickApply = () => {
+		onSubmit({
+			excerptText,
+		})
+		toast.success('Post options applied!')
+	}
+
+	const renderExcerptTextarea = () => {
+		const strippedExcerpt =
+			excerptText?.trim()?.replace(/^<[^>]+>|<\/[^>]+>$/g, '') || ''
+		return (
+			<div>
+				<Label htmlFor="excerpt" className="block capitalize">
+					{T.pageSubmission['Write an excerpt (optional)']}
+				</Label>
+				<Textarea
+					onChange={(event) => {
+						debounceGetExcerpt(event.currentTarget.value)
+					}}
+					defaultValue={strippedExcerpt}
+					className="mt-1"
+					placeholder="..."
+					name="excerpt"
+					id="excerpt"
+				/>
+			</div>
+		)
+	}
 
 	//
 
