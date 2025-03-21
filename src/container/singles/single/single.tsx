@@ -17,7 +17,13 @@ const DynamicSingleRelatedPosts = dynamic(
 
 const GET_RELATED_POSTS = gql`
   query GetRelatedPosts($databaseId: ID!) {
-    posts(where: { categoryIn: $databaseId }, first: 3) {
+    posts(
+      where: { 
+        categoryIn: $databaseId,
+        orderby: { field: DATE, order: DESC }  # Sortiramo po datumu
+      }, 
+      first: 10  # Dohvatimo više postova
+    ) {
       nodes {
         databaseId
         title
@@ -63,12 +69,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
-    const { data: relatedPostsData } = useQuery(GET_RELATED_POSTS, {
-        variables: { databaseId },
-        skip: !databaseId
-    });
+    const relatedPosts = relatedPostsData?.posts?.nodes 
+      ?[...relatedPostsData.posts.nodes]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3) 
+      : [];
 
-    const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
     // Hook za meta podatke
     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
