@@ -10,6 +10,7 @@ import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
 import dynamic from 'next/dynamic';
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
+import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
 
 const DynamicSingleRelatedPosts = dynamic(
     () => import('@/container/singles/SingleRelatedPosts'),
