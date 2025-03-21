@@ -46,10 +46,14 @@ interface Props {
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
 	excerptText: string
+	onSubmit: (data: PostOptionsData) => void
+	defaultData: PostOptionsData
 	//
 }
 
 const CreateNewPostEditor: FC<Props> = ({
+	onSubmit, 
+	defaultData,
 	isEditingPostId,
 	isEditingPage,
 	isSubmittingPage,
