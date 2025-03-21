@@ -241,17 +241,18 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <DynamicSingleRelatedPosts
-                                            posts={relatedPosts}
-                                            postDatabaseId={databaseId}
-                                         />
+                                        <div className="container">
+                                            <div>
+                                                <SectionSliderPosts postCardName="card9" posts={relatedPosts} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </aside>
                         </div>
                     </main>
                 </div>
-                <div className={`nc-PageSingle pt-8 lg:pt-16`}>
+                <div className={`nc-PageSingle pt-8 lg:pt-16`}>  
                     <header className="container rounded-xl">
                         <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
                             <SingleHeader post={{ ...post }} />
