@@ -69,12 +69,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
-    const relatedPosts = relatedPostsData?.posts?.nodes 
-      ?[...relatedPostsData.posts.nodes]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3) 
-      : [];
+    const { data: relatedPostsData, loading: loadingRelatedPosts } = useQuery(GET_RELATED_POSTS, {
+        variables: {
+            databaseId: databaseId 
+        },
+        skip: !databaseId
+     });
 
+    // Nakon što dobijemo podatke, nasumično odaberemo 3 posta
+    const relatedPosts = relatedPostsData?.posts?.nodes 
+        ? [...relatedPostsData.posts.nodes]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3) 
+        : [];
 
     // Hook za meta podatke
     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
