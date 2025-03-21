@@ -3,7 +3,6 @@
 import { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/components/Button/ButtonPrimary'
 import TitleEditor from './TitleEditor'
-import { debounce } from 'lodash'
 import TagsInput, { TagNodeShort } from './TagsInput'
 import CategoriesInput from './CategoriesInput'
 import PostOptionsBtn, { PostOptionsData } from './PostOptionsBtn'
