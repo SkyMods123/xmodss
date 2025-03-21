@@ -3,6 +3,7 @@
 import { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/components/Button/ButtonPrimary'
 import TitleEditor from './TitleEditor'
+import { debounce } from 'lodash'
 import TagsInput, { TagNodeShort } from './TagsInput'
 import CategoriesInput from './CategoriesInput'
 import PostOptionsBtn, { PostOptionsData } from './PostOptionsBtn'
@@ -11,7 +12,6 @@ import { Editor } from '@tiptap/react'
 import { useMutation } from '@apollo/client'
 import Alert from '@/components/Alert'
 import toast from 'react-hot-toast'
-import Textarea from '@/components/Textarea/Textarea'
 import {
 	NcmazFcCategoryFullFieldsFragmentFragment,
 	PostStatusEnum,
@@ -32,7 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import { debounce } from 'lodash'
 
 interface Props {
 	isEditingPage?: boolean
@@ -93,7 +92,6 @@ const CreateNewPostEditor: FC<Props> = ({
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}').contentHTML ||
 			defaultContentProp,
 	)
-	const [excerptText, setExcerptText] = useState(defaultData.excerptText)
 	const [featuredImage, setFeaturedImage] = useState<ImageState>(
 		() =>
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}')
@@ -119,10 +117,6 @@ const CreateNewPostEditor: FC<Props> = ({
 	//
 	const [newUpdatedUri, setNewUpdatedUri] = useState('')
 	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
-
-	const debounceGetExcerpt = debounce(function (e: string) {
-		setExcerptText(e)
-	}, 200)
 
 	//
 
@@ -440,13 +434,6 @@ const CreateNewPostEditor: FC<Props> = ({
 		onSubmmitMutation(PostStatusEnum.Draft)
 	}
 
-	const handleClickApply = () => {
-		onSubmit({
-			excerptText,
-		})
-		toast.success('Post options applied!')
-	}
-
 	const LOADING = loading || updatePostLoading
 	const ERROR = error || updatePostError
 
@@ -467,21 +454,6 @@ const CreateNewPostEditor: FC<Props> = ({
 						defaultValue={categories}
 						onChange={handleChangeCategories}
 					/>
-					<div>
-						<Label htmlFor="excerpt" className="block capitalize">
-							{T.pageSubmission['Write an excerpt (optional)']}
-						</Label>
-						<Textarea
-							onChange={(event) => {
-								debounceGetExcerpt(event.currentTarget.value)
-							}}
-							defaultValue={strippedExcerpt}
-							className="mt-1"
-							placeholder="..."
-							name="excerpt"
-							id="excerpt"
-						/>
-					</div>
 					<TitleEditor
 						defaultTitle={titleContent}
 						onUpdate={debounceGetTitle}
