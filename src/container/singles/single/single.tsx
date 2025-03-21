@@ -238,7 +238,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                         <div className={`relative`}>
 
                           {/* RELATED POSTS */}
-                          <DynamicSingleRelatedPosts
+                          <SingleRelatedPosts
                             posts={relatedPosts}
                             postDatabaseId={databaseId}
                           />
@@ -247,7 +247,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                     ) : (
                       <div>
                         {/* RELATED POSTS */}
-                        <DynamicSingleRelatedPosts
+                        <SingleRelatedPosts
                           posts={relatedPosts}
                           postDatabaseId={databaseId}
                         />
