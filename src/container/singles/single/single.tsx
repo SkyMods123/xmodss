@@ -13,7 +13,7 @@ import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 
 const GET_RELATED_POSTS = gql`
   query GetRelatedPosts($databaseId: Int!) {
-    posts(where: { isRelatedOfPostId: $databaseId }, first: 3) {
+    posts(where: { isRelatedOfPostId }, first: 3) {
       nodes {
         databaseId
         title
