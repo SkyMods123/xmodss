@@ -130,12 +130,6 @@ const CreateNewPostEditor: FC<Props> = ({
 		setExcerptText(e)
 	}, 200)
 
-	const handleClickApply = () => {
-		onSubmit({
-			excerptText,
-		})
-		toast.success('Post options applied!')
-	}
 
 	const renderExcerptTextarea = () => {
 		const strippedExcerpt =
