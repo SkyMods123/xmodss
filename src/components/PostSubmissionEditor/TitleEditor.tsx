@@ -33,9 +33,6 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
 		},
 	})
 
-	const firstNameRef = useRef<HTMLInputElement>(null)
-	const viewer = { firstName: 'John' } // Replace this with your actual viewer data
-
 	return (
 		<>
 			<div className="EditProfileForm__firstName">
