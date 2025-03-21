@@ -41,10 +41,10 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
 			<div className="EditProfileForm__firstName">
 				<Label>{T['First Name']}</Label>
 				<Input
-					className="mt-1.5"
+					<EditorContent className="focus:outline-none" editor={editor} />
 				/>
 			</div>
-			<EditorContent className="focus:outline-none" editor={editor} />
+
 		</>
 	)
 }
