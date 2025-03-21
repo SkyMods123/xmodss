@@ -42,8 +42,6 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
 				<Label>{T['First Name']}</Label>
 				<Input
 					className="mt-1.5"
-					defaultValue={viewer?.firstName || ''}
-					ref={firstNameRef}
 				/>
 			</div>
 			<EditorContent className="focus:outline-none" editor={editor} />
