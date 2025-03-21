@@ -64,7 +64,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
 
-    const relatedPosts = relatedPostsData?.posts?.nodes || [];
+    const relatedPosts = GET_RELATED_POSTS?.posts?.nodes || [];
 
     // Hook za meta podatke
     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
