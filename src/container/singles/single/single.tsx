@@ -10,35 +10,8 @@ import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
+import { GET_RELATED_POSTS, RelatedPostsData, RelatedPostsVars } from '@/src/fragments/queries';
 
-const GET_RELATED_POSTS = gql`
-  query GetRelatedPosts($databaseId: Int!) {
-    posts(where: { isRelatedOfPostId: $databaseId }, first: 4) {
-      nodes {
-        databaseId
-        title
-        uri
-        date
-        excerpt
-        featuredImage {
-          node {
-            sourceUrl
-            altText
-          }
-        }
-        author {
-          node {
-            name
-            uri
-            avatar {
-              url
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -58,11 +31,15 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
-    // Fetch related posts
-    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS, {
-        variables: { databaseId: Number(databaseId) },
-        skip: !databaseId
-    });
+    const { data: relatedPostsData, loading: loadingRelatedPosts } = useQuery<RelatedPostsData, RelatedPostsVars>(
+        GET_RELATED_POSTS,
+        {
+            variables: {
+                databaseId: databaseId 
+          },
+          skip: !databaseId
+        }
+    );
 
     const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
