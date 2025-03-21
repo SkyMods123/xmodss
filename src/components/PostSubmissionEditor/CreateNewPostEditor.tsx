@@ -93,6 +93,7 @@ const CreateNewPostEditor: FC<Props> = ({
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}').contentHTML ||
 			defaultContentProp,
 	)
+	const [excerptText, setExcerptText] = useState(defaultData.excerptText)
 	const [featuredImage, setFeaturedImage] = useState<ImageState>(
 		() =>
 			JSON.parse(localStorage.getItem(localStoragePath) || '{}')
@@ -437,6 +438,13 @@ const CreateNewPostEditor: FC<Props> = ({
 	const handleClickSaveDraft = () => {
 		if (!isAuthenticated && !isReady) return
 		onSubmmitMutation(PostStatusEnum.Draft)
+	}
+
+	const handleClickApply = () => {
+		onSubmit({
+			excerptText,
+		})
+		toast.success('Post options applied!')
 	}
 
 	const LOADING = loading || updatePostLoading
