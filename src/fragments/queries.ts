@@ -288,7 +288,7 @@ export const QUERY_GET_POSTS_BY_USER_REACTION = gql(/* GraphQL */ `
 	}
 `)
 
-export const GET_RELATED_POSTS = gql`
+export const GET_RELATED_POSTS = gql(`
   query GetRelatedPosts($databaseId: Int!) {
     posts(where: { isRelatedOfPostId: $databaseId }, first: 4) {
       nodes {
@@ -315,4 +315,4 @@ export const GET_RELATED_POSTS = gql`
       }
     }
   }
-`;
+`)
