@@ -12,6 +12,7 @@ import { Editor } from '@tiptap/react'
 import { useMutation } from '@apollo/client'
 import Alert from '@/components/Alert'
 import toast from 'react-hot-toast'
+import Textarea from '@/components/Textarea/Textarea'
 import {
 	NcmazFcCategoryFullFieldsFragmentFragment,
 	PostStatusEnum,
