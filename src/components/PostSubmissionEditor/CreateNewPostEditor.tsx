@@ -51,7 +51,6 @@ interface Props {
 }
 
 const CreateNewPostEditor: FC<Props> = ({
-	onSubmit, 
 	defaultData,
 	isEditingPostId,
 	isEditingPage,
