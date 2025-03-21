@@ -316,3 +316,36 @@ export const GET_RELATED_POSTS = gql(`
     }
   }
 `)
+
+// Možete dodati i izvozni interface za tipizaciju
+export interface RelatedPostsData {
+  posts: {
+    nodes: Array<{
+      databaseId: number;
+      title: string;
+      uri: string;
+      date: string;
+      excerpt: string;
+      featuredImage?: {
+        node: {
+          sourceUrl: string;
+          altText: string;
+        };
+      };
+      author: {
+        node: {
+          name: string;
+          uri: string;
+          avatar: {
+            url: string;
+          };
+        };
+      };
+    }>;
+  };
+}
+
+// Tip za varijable upita
+export interface RelatedPostsVars {
+  databaseId: number;
+}
