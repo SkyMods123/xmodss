@@ -10,7 +10,7 @@ import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
-import { GET_RELATED_POSTS, RelatedPostsData, RelatedPostsVars } from '@/fragments/queries';
+import { GET_RELATED_POSTS } from '@/fragments/queries';
 
 
 export interface SingleType1Props {
@@ -31,11 +31,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
-    const { data: relatedPostsData, loading: loadingRelatedPosts } = useQuery<RelatedPostsData, RelatedPostsVars>(
-        GET_RELATED_POSTS,
-        {
-            variables: {
-                databaseId: databaseId 
+    const { data: relatedPostsData, loading: loadingRelatedPosts } = useQuery(GET_RELATED_POSTS, {
+        variables: {
+            databaseId: databaseId 
           },
           skip: !databaseId
         }
