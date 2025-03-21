@@ -130,29 +130,6 @@ const CreateNewPostEditor: FC<Props> = ({
 		setExcerptText(e)
 	}, 200)
 
-
-	const renderExcerptTextarea = () => {
-		const strippedExcerpt =
-			excerptText?.trim()?.replace(/^<[^>]+>|<\/[^>]+>$/g, '') || ''
-		return (
-			<div>
-				<Label htmlFor="excerpt" className="block capitalize">
-					{T.pageSubmission['Write an excerpt (optional)']}
-				</Label>
-				<Textarea
-					onChange={(event) => {
-						debounceGetExcerpt(event.currentTarget.value)
-					}}
-					defaultValue={strippedExcerpt}
-					className="mt-1"
-					placeholder="..."
-					name="excerpt"
-					id="excerpt"
-				/>
-			</div>
-		)
-	}
-
 	//
 
 	// all keys of states
@@ -483,6 +460,21 @@ const CreateNewPostEditor: FC<Props> = ({
 						<ButtonInsertImage
 							defaultImage={featuredImage}
 							onChangeImage={handleChangeFeaturedImage}
+						/>
+					</div>
+					<div>
+						<Label htmlFor="excerpt" className="block capitalize">
+							{T.pageSubmission['Write an excerpt (optional)']}
+						</Label>		
+						<Textarea
+							onChange={(event) => {
+								debounceGetExcerpt(event.currentTarget.value)
+							}}
+							defaultValue={strippedExcerpt}
+							className="mt-1"
+							placeholder="..."
+							name="excerpt"
+							id="excerpt"
 						/>
 					</div>
 					<CategoriesInput
