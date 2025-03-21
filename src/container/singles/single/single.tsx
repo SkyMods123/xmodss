@@ -56,7 +56,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         excerpt,
         featuredImage,
         ncPostMetaData,
-        description,
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
