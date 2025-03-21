@@ -34,8 +34,7 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
 
   return (
     <>
-      <EditorContent editor={editor} className="mt-1" placeholder="cheat title" />
-      <Textarea className="mt-1" placeholder="cheat title" name="excerpt" />
+      <Textarea editor={editor} className="mt-1" placeholder="cheat title" />
     </>
   )
 }
