@@ -470,7 +470,6 @@ const CreateNewPostEditor: FC<Props> = ({
 							onChange={(event) => {
 								debounceGetExcerpt(event.currentTarget.value)
 							}}
-							defaultValue={strippedExcerpt}
 							className="mt-1"
 							placeholder="..."
 							name="excerpt"
