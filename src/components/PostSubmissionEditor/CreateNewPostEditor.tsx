@@ -46,7 +46,6 @@ interface Props {
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
 	excerptText: string
-	onSubmit: (data: PostOptionsData) => void
 	defaultData: PostOptionsData
 	//
 }
