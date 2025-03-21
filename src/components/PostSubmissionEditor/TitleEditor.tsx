@@ -28,20 +28,14 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
     immediatelyRender: false,
     content: defaultTitle,
     onUpdate: ({ editor }) => {
-      // @ts-ignore
       onUpdate(editor)
     },
   })
 
   return (
     <>
-      <Textarea
-        <EditorContent
-          className="mt-1"
-          placeholder="cheat title"
-          editor={editor}
-        </>
-      </>
+      <EditorContent editor={editor} className="mt-1" placeholder="cheat title" />
+      <Textarea className="mt-1" placeholder="cheat title" name="excerpt" />
     </>
   )
 }
