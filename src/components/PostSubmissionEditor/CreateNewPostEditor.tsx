@@ -454,6 +454,21 @@ const CreateNewPostEditor: FC<Props> = ({
 						defaultValue={categories}
 						onChange={handleChangeCategories}
 					/>
+					<div>
+						<Label htmlFor="excerpt" className="block capitalize">
+							{T.pageSubmission['Write an excerpt (optional)']}
+						</Label>
+						<Textarea
+							onChange={(event) => {
+								debounceGetExcerpt(event.currentTarget.value)
+							}}
+							defaultValue={strippedExcerpt}
+							className="mt-1"
+							placeholder="..."
+							name="excerpt"
+							id="excerpt"
+						/>
+					</div>
 					<TitleEditor
 						defaultTitle={titleContent}
 						onUpdate={debounceGetTitle}
