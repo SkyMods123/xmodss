@@ -36,10 +36,12 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
   return (
     <>
       <Textarea
-        className="mt-1"
-        placeholder="cheat title"
-        name="excerpt"
-      />
+        <EditorContent
+          className="mt-1"
+          placeholder="cheat title"
+          editor={editor}
+        </>
+      </>
     </>
   )
 }
