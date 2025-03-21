@@ -12,12 +12,10 @@ import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 
 const GET_RELATED_POSTS = gql`
-  query GetRelatedPosts($databaseId: ID!) {
+  query GetRelatedPosts {
     posts(
       where: { 
-        categoryIn: $databaseId,
-        orderby: { field: RAND },
-        notIn: [$databaseId]  # Isključujemo trenutni post
+        orderby: { field: RAND }
       }, 
       first: 3
     ) {
@@ -66,12 +64,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
-    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS, {
-        variables: { 
-            databaseId: databaseId // Koristimo databaseId trenutnog posta
-        },
-        skip: !databaseId
-    });
+    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS);
+
+    // Dodajemo console.log da vidimo što dobivamo
+    console.log('Related Posts Data:', relatedPostsData);
+    console.log('Loading:', loading);
+    console.log('Error:', error);
 
     const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
