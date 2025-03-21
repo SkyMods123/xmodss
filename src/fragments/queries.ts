@@ -1,4 +1,6 @@
-import { gql } from '@/__generated__'
+import { useQuery } from '@apollo/client'
+import { gql } from '../__generated__'
+import { TPostCard } from '@/components/Card2/Card2'
 
 export const GET_POSTS_NCMAZ_META_BY_IDS = gql(/* GraphQL */ `
 	query QueryGetPostsNcmazMetadataByIds(
