@@ -202,11 +202,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 								</div>
 							</div>
 
-							{/* RELATED POSTS */}
-							<DynamicSingleRelatedPosts
-								posts={_relatedPosts}
-								postDatabaseId={databaseId}
-							/>
 						</div>
 					</div>
 				) : (
@@ -218,11 +213,6 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 							<SingleContent post={_post} />
 						</div>
 
-						{/* RELATED POSTS */}
-						<DynamicSingleRelatedPosts
-							posts={_relatedPosts}
-							postDatabaseId={databaseId}
-						/>
 					</div>
 				)}
 			</PageLayout>
