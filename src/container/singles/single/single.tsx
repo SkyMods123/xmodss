@@ -11,10 +11,8 @@ import dynamic from 'next/dynamic';
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
+import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 
-const DynamicSingleRelatedPosts = dynamic(
-    () => import('@/container/singles/SingleRelatedPosts'),
-);
 
 const GET_RELATED_POSTS = gql`
   query GetRelatedPosts($databaseId: ID!) {
@@ -238,7 +236,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         </div>
                                         <div className="container">
                                             <div>
-                                                <DynamicSingleRelatedPosts posts={relatedPosts} postDatabaseId={databaseId} />
+                                                <SingleRelatedPosts posts={relatedPosts} postDatabaseId={databaseId} />
                                             </div>
                                         </div>
                                     </div>
