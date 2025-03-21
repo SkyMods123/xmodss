@@ -32,7 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import Textarea from '@/components/Textarea/Textarea'
 
 interface Props {
 	isEditingPage?: boolean
@@ -45,13 +44,10 @@ interface Props {
 	defaultTags?: TagNodeShort[]
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
-	excerptText: string
-	defaultData: PostOptionsData
 	//
 }
 
 const CreateNewPostEditor: FC<Props> = ({
-	defaultData,
 	isEditingPostId,
 	isEditingPage,
 	isSubmittingPage,
@@ -121,12 +117,6 @@ const CreateNewPostEditor: FC<Props> = ({
 	//
 	const [newUpdatedUri, setNewUpdatedUri] = useState('')
 	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
-
-	const [excerptText, setExcerptText] = useState(defaultData.excerptText)
-
-	const debounceGetExcerpt = debounce(function (e: string) {
-		setExcerptText(e)
-	}, 200)
 
 	//
 
@@ -458,20 +448,6 @@ const CreateNewPostEditor: FC<Props> = ({
 						<ButtonInsertImage
 							defaultImage={featuredImage}
 							onChangeImage={handleChangeFeaturedImage}
-						/>
-					</div>
-					<div>
-						<Label htmlFor="excerpt" className="block capitalize">
-							{T.pageSubmission['Write an excerpt (optional)']}
-						</Label>		
-						<Textarea
-							onChange={(event) => {
-								debounceGetExcerpt(event.currentTarget.value)
-							}}
-							className="mt-1"
-							placeholder="..."
-							name="excerpt"
-							id="excerpt"
 						/>
 					</div>
 					<CategoriesInput
