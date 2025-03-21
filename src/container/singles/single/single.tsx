@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
-import Tag from '@/components/Tag/Tag'
+import Tag from '@/components/Tag/Tag';
 import NcImage from '@/components/NcImage/NcImage';
 import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment';
 import SingleHeader from '../SingleHeader';
@@ -8,11 +8,42 @@ import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
 import dynamic from 'next/dynamic';
+import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 
 const DynamicSingleRelatedPosts = dynamic(
     () => import('@/container/singles/SingleRelatedPosts'),
 );
+
+// GraphQL query za related posts
+const GET_RELATED_POSTS = gql`
+query GetRelatedPosts($databaseId: ID!) {
+    posts(where: { categoryIn: $databaseId }, first: 3) {
+        nodes {
+            databaseId
+            title
+            uri
+            date
+            excerpt
+            featuredImage {
+                node {
+                    sourceUrl
+                    altText
+                }
+            }
+            author {
+                node {
+                    name
+                    uri
+                    avatar {
+                        url
+                    }
+                }
+            }
+        }
+    }
+}
+`;
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -32,8 +63,17 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         ncPostMetaData,
     } = getPostDataFromPostFragment(post || {});
 
-     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
-        posts: post._relatedPosts as TPostCard[] || []
+    // Fetch related posts
+    const { data: relatedPostsData } = useQuery(GET_RELATED_POSTS, {
+        variables: { databaseId },
+        skip: !databaseId
+    });
+
+    const relatedPosts = relatedPostsData?.posts?.nodes || [];
+
+    // Hook za meta podatke
+    const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
+        posts: relatedPosts as TPostCard[]
     });
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
@@ -202,15 +242,14 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <div className="container mt-10">
-                                            b
-                                            {!loadingRelatedMeta && post._relatedPosts?.length > 0 && (
+                                        {!loadingRelatedMeta && relatedPosts.length > 0 && (
+                                            <div className="container my-10">
                                                 <DynamicSingleRelatedPosts
-                                                    posts={post._relatedPosts}
+                                                    posts={relatedPosts as TPostCard[]}
                                                     postDatabaseId={databaseId}
                                                 />
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </aside>
