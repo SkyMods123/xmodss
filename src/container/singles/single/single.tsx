@@ -235,6 +235,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                             <h2>Similar Scripts</h2>
                                         </div>
                                         {loading ? (
+                                            <div>Loading...</div>
                                         ) : error ? (
                                             <div>Error loading related posts</div>
                                         ) : relatedPosts.length > 0 ? (
