@@ -7,18 +7,17 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
+import dynamic from 'next/dynamic';
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
-import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
+
+const DynamicSingleRelatedPosts = dynamic(
+    () => import('@/container/singles/SingleRelatedPosts'),
+);
 
 const GET_RELATED_POSTS = gql`
-  query GetRelatedPosts {
-    posts(
-      where: { 
-        orderby: { field: RAND }
-      }, 
-      first: 3
-    ) {
+  query GetRelatedPosts($databaseId: ID!) {
+    posts(where: { categoryIn: $databaseId }, first: 3) {
       nodes {
         databaseId
         title
@@ -64,12 +63,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
-    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS);
-
-    // Dodajemo console.log da vidimo što dobivamo
-    console.log('Related Posts Data:', relatedPostsData);
-    console.log('Loading:', loading);
-    console.log('Error:', error);
+    const { data: relatedPostsData } = useQuery(GET_RELATED_POSTS, {
+        variables: { databaseId },
+        skip: !databaseId
+    });
 
     const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
@@ -80,7 +77,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
-    return (
+    const imgWidth = featuredImage?.mediaDetails?.width || 1000;
+    const imgHeight = featuredImage?.mediaDetails?.height || 750;
+
+     return (
         <>
             <Head>
                 <title>{title}</title>
@@ -236,25 +236,34 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                 </section>
                             </div>
                             <aside className="script-similar-scripts lg:col-span-1">
-                                <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                                <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
-                                        {loading ? (
-                                            <div>Loading...</div>
-                                        ) : error ? (
-                                            <div>Error loading related posts</div>
-                                        ) : relatedPosts.length > 0 ? (
-                                            <SingleRelatedPosts
-                                                posts={relatedPosts}
-                                                postDatabaseId={databaseId}
-                                            />
-                                        ) : (
-                                            <div>No related posts found</div>
+                                        <div className="text-2xl font-semibold leading-none tracking-tight">
+                                            <h2>Similar Scripts</h2>
+                                        </div>
+                                        {!loadingRelatedMeta && relatedPosts.length > 0 && (
+                                            <div className="container my-10">
+                                                <DynamicSingleRelatedPosts
+                                                    posts={relatedPosts}
+                                                    postDatabaseId={databaseId}
+                                                />
+                                            </div>
                                         )}
                                     </div>
                                 </div>
                             </aside>
                         </div>
                     </main>
+                </div>
+                <div className={`nc-PageSingle pt-8 lg:pt-16`}>
+                    <header className="container rounded-xl">
+                        <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
+                            <SingleHeader post={{ ...post }} />
+                            {!hasFeaturedImage && (
+                                <div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
+                            )}
+                        </div>
+                    </header>
                 </div>
             </div>
         </>
