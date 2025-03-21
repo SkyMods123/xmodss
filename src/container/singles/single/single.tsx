@@ -229,11 +229,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                 </section>
                             </div>
                             <aside className="script-similar-scripts lg:col-span-1">
-                                <div className="rounded-lg border text-card-foreground shadow-sm sticky top-20 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                                <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bottom-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
-                                        <div className="text-2xl font-semibold leading-none tracking-tight">
-                                            <h2>Similar Scripts</h2>
-                                        </div>
                                         {loading ? (
                                             <div>Loading...</div>
                                         ) : error ? (
@@ -251,16 +248,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             </aside>
                         </div>
                     </main>
-                </div>
-                <div className={`nc-PageSingle pt-8 lg:pt-16`}>
-                    <header className="container rounded-xl">
-                        <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
-                            <SingleHeader post={{ ...post }} />
-                            {!hasFeaturedImage && (
-                                <div className="my-5 border-b border-neutral-200 dark:border-neutral-800" />
-                            )}
-                        </div>
-                    </header>
                 </div>
             </div>
         </>
