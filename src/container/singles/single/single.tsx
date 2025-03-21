@@ -241,14 +241,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        {!loadingRelatedMeta && relatedPosts.length > 0 && (
-                                            <div className="container my-10">
-                                                <DynamicSingleRelatedPosts
-                                                    posts={relatedPosts}
-                                                    postDatabaseId={databaseId}
-                                                />
-                                            </div>
-                                        )}
+                                        <DynamicSingleRelatedPosts
+                                            posts={relatedPosts}
+                                            postDatabaseId={databaseId}
+                                         />
                                     </div>
                                 </div>
                             </aside>
