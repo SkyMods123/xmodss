@@ -231,15 +231,9 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             <aside className="script-similar-scripts lg:col-span-1">
                                 <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
-                                        {loading ? (
-                                        ) : relatedPosts.length > 0 ? (
-                                            <SingleRelatedPosts
-                                                posts={relatedPosts}
-                                                postDatabaseId={databaseId}
-                                            />
-                                        ) : (
-                                            <div>No related posts found</div>
-                                        )}
+                                      <SingleRelatedPosts
+                                        posts={relatedPosts}
+                                        postDatabaseId={databaseId}
                                     </div>
                                 </div>
                             </aside>
