@@ -33,6 +33,7 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
+import { debounce } from 'lodash'
 
 interface Props {
 	isEditingPage?: boolean
@@ -118,6 +119,10 @@ const CreateNewPostEditor: FC<Props> = ({
 	//
 	const [newUpdatedUri, setNewUpdatedUri] = useState('')
 	const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
+
+	const debounceGetExcerpt = debounce(function (e: string) {
+		setExcerptText(e)
+	}, 200)
 
 	//
 
