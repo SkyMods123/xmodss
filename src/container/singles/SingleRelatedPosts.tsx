@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Heading from "@/components/Heading/Heading";
 import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
 import { PostDataFragmentType } from "@/data/types";
+import SingleContent from '@/container/singles/SingleContent'
 
 export interface SingleRelatedPostsProps {
   postDatabaseId: number;
@@ -28,7 +29,7 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
             Related posts
           </Heading>
 
-          <Div postCardName="card7" posts={posts || []} />
+          <SingleContent postCardName="card7" posts={posts || []} />
         </div>
       </div>
     </div>
