@@ -64,10 +64,11 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
 
-    const _relatedPosts = post._relatedPosts || [];
+    const relatedPosts = relatedPostsData?.posts?.nodes || [];
 
+    // Hook za meta podatke
     const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
-        posts: [post] as TPostCard[]
+        posts: relatedPosts as TPostCard[]
     });
     
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
@@ -238,7 +239,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         </div>
                                         {/* RELATED POSTS */}
                                         <DynamicSingleRelatedPosts
-                                            posts={_relatedPosts}
+                                            posts={relatedPosts}
                                             postDatabaseId={databaseId}
                                         />
                                     </div>
