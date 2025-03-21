@@ -95,12 +95,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                 <div className="absolute -top-[370px] hidden h-[50rem] w-full md:block"></div>
                 <div className="min-h-screen bg-background">
                     <main className="container px-4 py-6 lg:px-14">
-                        {/* Current Date and User Info */}
-                        <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                            <span>Current Date: 2025-03-21 03:32:40 (UTC)</span>
-                            <span className="mx-2">|</span>
-                            <span>User: SkyMods123</span>
-                        </div>
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                             <div className="z-10 space-y-6 lg:col-span-2">
                                 <header className="!mt-0">
@@ -241,7 +235,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                             <h2>Similar Scripts</h2>
                                         </div>
                                         {loading ? (
-                                            <div>Loading...</div>
                                         ) : error ? (
                                             <div>Error loading related posts</div>
                                         ) : relatedPosts.length > 0 ? (
