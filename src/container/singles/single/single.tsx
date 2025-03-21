@@ -234,6 +234,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                       <SingleRelatedPosts
                                         posts={relatedPosts}
                                         postDatabaseId={databaseId}
+                                      />
                                     </div>
                                 </div>
                             </aside>
