@@ -56,6 +56,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         excerpt,
         featuredImage,
         ncPostMetaData,
+        description,
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
@@ -71,7 +72,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
         posts: relatedPosts as TPostCard[]
     });
 
-    const descriptionNoHtmlTags = excerpt?.replace(/<[^>]*>?/gm, "") || "";
+    const descriptionNoHtmlTags = description?.replace(/<[^>]*>?/gm, "") || "";
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
