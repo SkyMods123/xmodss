@@ -6,13 +6,6 @@ import { getPostDataFromPostFragment } from '@/utils/getPostDataFromPostFragment
 import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
-import { useRelatedPosts } from '@/hooks/useRelatedPosts';
-import dynamic from 'next/dynamic';
-
-const DynamicSingleRelatedPosts = dynamic(
-  () => import('@/container/singles/SingleRelatedPosts'),
-);
-
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -36,8 +29,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const imgWidth = featuredImage?.mediaDetails?.width || 1000;
     const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-    const { relatedPosts, loading: loadingRelated } = useRelatedPosts(databaseId);
 
     return (
         <>
@@ -200,14 +191,19 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <div className="container my-10">
-                                            {!loadingRelated && (
-                                                <DynamicSingleRelatedPosts
-                                                    posts={relatedPosts}
-                                                    postDatabaseId={databaseId}
-                                                />
-                                            )}
-                                        </div>
+                                        {tags?.nodes?.length ? (
+                                            <div className="mx-auto flex max-w-screen-md flex-wrap">
+                                                {tags.nodes.map((item) => (
+                                                    <Tag
+                                                        hideCount
+                                                        key={item.databaseId}
+                                                        name={'#' + (item.name || '')}
+                                                        uri={item.uri || ''}
+                                                        className="mb-2 me-2 border border-neutral-200 dark:border-neutral-800"
+                                                    />
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </aside>
