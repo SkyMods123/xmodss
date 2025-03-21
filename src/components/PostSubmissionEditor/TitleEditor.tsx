@@ -3,6 +3,7 @@ import { useEditor, EditorContent, Editor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import getTrans from '@/utils/getTrans'
+import Textarea from '@/components/Textarea/Textarea'
 
 interface Props {
 	onUpdate: (editor: Editor) => void
@@ -32,7 +33,17 @@ const TitleEditor: FC<Props> = ({ onUpdate, defaultTitle = '' }) => {
 		},
 	})
 
-	return <EditorContent className="focus:outline-none" editor={editor} />
+	return (
+		<>
+			<Textarea
+				editor={editor}
+				className="mt-1"
+				placeholder="cheat title"
+				name="excerpt"
+			/>
+		</>
+	)
+
 }
 
 export default TitleEditor
