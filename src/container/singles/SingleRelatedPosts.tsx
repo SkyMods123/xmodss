@@ -11,8 +11,7 @@ export interface SingleRelatedPostsProps {
 const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
   postDatabaseId,
   posts,
-}) => {}
-
+}) => {
   return (
     <div className="bg-neutral-100/80 dark:bg-neutral-800 py-16 lg:py-20 mt-16 lg:mt-20">
       {/* RELATED  */}
