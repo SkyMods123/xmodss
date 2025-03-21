@@ -244,7 +244,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         </div>
                                         <div className="container">
                                             <div>
-                                                <SectionSliderPosts postCardName="card9" posts={relatedPosts} />
+                                                <DynamicSingleRelatedPosts posts={relatedPosts} postDatabaseId={databaseId} />
                                             </div>
                                         </div>
                                     </div>
