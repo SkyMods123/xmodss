@@ -1,7 +1,6 @@
 import React, { FC } from "react";
-import Heading from "@/components/Heading/Heading";
-import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
 import { PostDataFragmentType } from "@/data/types";
+import Card9 from "@/components/Card9/Card9"; // Importamo Card9 komponentu
 
 export interface SingleRelatedPostsProps {
   postDatabaseId: number;
@@ -12,21 +11,21 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
   postDatabaseId,
   posts,
 }) => {
-  // Ako nema postova, ne prikazujemo ništa
   if (!posts?.length) {
     return null;
   }
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col space-y-4">
-        {/* Prikazujemo postove korištenjem SectionSliderPosts */}
-        <SectionSliderPosts 
-          postCardName="card9" 
-          posts={posts} 
-          className="w-full"
-        />
-      </div>
+    <div className="w-full space-y-4">
+      {posts.map((post, index) => (
+        <div key={post.databaseId || index} className="mb-4 last:mb-0">
+          <Card9 
+            post={post}
+            ratio="aspect-w-3 aspect-h-3"
+            className="w-full"
+          />
+        </div>
+      ))}
     </div>
   );
 };
