@@ -222,7 +222,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         </div>
                                         <div className="p-6 pt-0 space-y-4">
                                             <div className="flex flex-col gap-2">
-                                                <h4 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">{content}</h4>
+                                                <h4 className="text-neutral-900 truncate text-xl font-bold sm:text-2xl dark:text-neutral-100">{excerpt}</h4>
                                             </div>
                                         </div>
                                     </div>
