@@ -7,17 +7,13 @@ import SingleHeader from '../SingleHeader';
 import { FragmentTypePostFullFields } from '@/container/type';
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta';
 import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
-import dynamic from 'next/dynamic';
 import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
-
-const DynamicSingleRelatedPosts = dynamic(
-    () => import('@/container/singles/SingleRelatedPosts'),
-);
+import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 
 const GET_RELATED_POSTS = gql`
-  query GetRelatedPosts($databaseId: ID!) {
-    posts(where: { categoryIn: $databaseId }, first: 3) {
+  query GetRelatedPosts($databaseId: Int!) {
+    posts(where: { isRelatedOfPostId: $databaseId }, first: 3) {
       nodes {
         databaseId
         title
@@ -63,8 +59,8 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
     } = getPostDataFromPostFragment(post || {});
 
     // Fetch related posts
-    const { data: relatedPostsData } = useQuery(GET_RELATED_POSTS, {
-        variables: { databaseId },
+    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS, {
+        variables: { databaseId: Number(databaseId) },
         skip: !databaseId
     });
 
@@ -77,10 +73,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
 
     const hasFeaturedImage = !!featuredImage?.sourceUrl;
 
-    const imgWidth = featuredImage?.mediaDetails?.width || 1000;
-    const imgHeight = featuredImage?.mediaDetails?.height || 750;
-
-     return (
+    return (
         <>
             <Head>
                 <title>{title}</title>
@@ -102,6 +95,12 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                 <div className="absolute -top-[370px] hidden h-[50rem] w-full md:block"></div>
                 <div className="min-h-screen bg-background">
                     <main className="container px-4 py-6 lg:px-14">
+                        {/* Current Date and User Info */}
+                        <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                            <span>Current Date: 2025-03-21 03:32:40 (UTC)</span>
+                            <span className="mx-2">|</span>
+                            <span>User: SkyMods123</span>
+                        </div>
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                             <div className="z-10 space-y-6 lg:col-span-2">
                                 <header className="!mt-0">
@@ -241,17 +240,25 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                         <div className="text-2xl font-semibold leading-none tracking-tight">
                                             <h2>Similar Scripts</h2>
                                         </div>
-                                        <DynamicSingleRelatedPosts
-                                            posts={relatedPosts}
-                                            postDatabaseId={databaseId}
-                                         />
+                                        {loading ? (
+                                            <div>Loading...</div>
+                                        ) : error ? (
+                                            <div>Error loading related posts</div>
+                                        ) : relatedPosts.length > 0 ? (
+                                            <SingleRelatedPosts
+                                                posts={relatedPosts}
+                                                postDatabaseId={databaseId}
+                                            />
+                                        ) : (
+                                            <div>No related posts found</div>
+                                        )}
                                     </div>
                                 </div>
                             </aside>
                         </div>
                     </main>
                 </div>
-                <div className={`nc-PageSingle pt-8 lg:pt-16`}>   
+                <div className={`nc-PageSingle pt-8 lg:pt-16`}>
                     <header className="container rounded-xl">
                         <div className={!hasFeaturedImage && showRightSidebar ? '' : `mx-auto max-w-screen-md`}>
                             <SingleHeader post={{ ...post }} />
