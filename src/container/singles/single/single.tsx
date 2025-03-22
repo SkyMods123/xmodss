@@ -228,7 +228,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                     </div>
                                 </section>
                             </div>
-                            <aside className="script-similar-scripts lg:col-span-1">
+                            <aside className="script-similar-scripts lg:col-span-1" style="height: 890px" >
                                 <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
                                       <SingleRelatedPosts
