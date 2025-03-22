@@ -81,7 +81,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
             <div className="bg-background __className_3a0388 min-h-screen">
                 <div className="coverimg absolute -top-[380px] hidden h-[50rem] w-full opacity-30 blur-[2px] md:block">
                     <img
-                        alt="background coverart"
+                        src={featuredImage?.sourceUrl || ''}
                         fetchPriority="high"
                         loading="eager"
                         width="135"
