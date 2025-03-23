@@ -23,6 +23,7 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
             post={post}
             ratio="aspect-w-3 aspect-h-3"
             className="w-full min-h-[200] h-[200px]" // Za minimalnu i fiksnu visinu
+            className="w-full min-w-[350] w-[350px]"
           />
         </div>
       ))}
