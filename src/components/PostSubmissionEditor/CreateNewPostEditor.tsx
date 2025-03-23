@@ -4,10 +4,6 @@ import { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/components/Button/ButtonPrimary'
 import TitleEditor from './TitleEditor'
 import { debounce } from 'lodash'
-import TagsInput, { TagNodeShort } from './TagsInput'
-import CategoriesInput from './CategoriesInput'
-import PostOptionsBtn, { PostOptionsData } from './PostOptionsBtn'
-import TiptapEditor from './TiptapEditor'
 import { Editor } from '@tiptap/react'
 import { useMutation } from '@apollo/client'
 import Alert from '@/components/Alert'
@@ -16,7 +12,6 @@ import {
 	NcmazFcCategoryFullFieldsFragmentFragment,
 	PostStatusEnum,
 } from '@/__generated__/graphql'
-import ButtonInsertImage, { ImageState } from './ButtonInsertImage'
 import { getApolloAuthClient } from '@faustwp/core'
 import Button from '../Button/Button'
 import { useRouter } from 'next/router'
