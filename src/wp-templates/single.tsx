@@ -44,7 +44,7 @@ const DynamicSingleType5 = dynamic(
 
 // Eksportovana funkcija za dobijanje related posts
 export const getRelatedPosts = (data: GetPostSiglePageQuery) => {
-  return (data?.posts?.nodes || [];
+  return (data?.posts?.nodes || []);
 }
 
 const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
