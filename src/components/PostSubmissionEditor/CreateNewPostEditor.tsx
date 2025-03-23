@@ -466,12 +466,6 @@ const CreateNewPostEditor: FC<Props> = ({
 					<div className="hiddenScrollbar flex-1 overflow-y-auto">
 						{renderPostTitle()}
 
-						<TiptapEditor
-							defaultContent={contentHTML}
-							onUpdate={debounceGetContentHtml}
-						/>
-					</div>
-
 					<div className="w-full flex-shrink-0 border-t border-neutral-200 px-2.5 dark:border-neutral-600">
 						<div className="mx-auto flex w-full max-w-screen-md flex-wrap gap-2 py-4 pt-[18px] sm:gap-3">
 							<ButtonPrimary
@@ -495,10 +489,6 @@ const CreateNewPostEditor: FC<Props> = ({
 									? T.pageSubmission['Move to draft']
 									: T.pageSubmission['Save draft']}
 							</Button>
-							<PostOptionsBtn
-								defaultData={postOptionsData}
-								onSubmit={handleApplyPostOptions}
-							/>
 							{enableRevertBtn ? (
 								<Button
 									fontSize="text-sm font-medium"
