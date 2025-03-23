@@ -458,7 +458,9 @@ const CreateNewPostEditor: FC<Props> = ({
 						onChange={handleChangeCategories}
 					/>
 					<Input
-						onChange={debounceGetTitle}
+						onChange={(event) => {
+							debounceGetTitle(event.currentTarget.value)
+						}}
 						className="!rounded-s-none"
 						placeholder={'yourwebsite.com'}
 						defaultValue={titleContent}
