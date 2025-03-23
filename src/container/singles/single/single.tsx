@@ -11,6 +11,7 @@ import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 import { GET_RELATED_POSTS } from '@/container/singles/single/related';
+import { getRelatedPosts } from '@/wp-templates/single';
 
 
 export interface SingleType1Props {
@@ -204,7 +205,7 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                 <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-[900px] ">
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
                                       <SingleRelatedPosts
-                                        posts={relatedPosts}
+                                        posts={getRelatedPosts}
                                         postDatabaseId={databaseId}
                                       />
                                     </div>
