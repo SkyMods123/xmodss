@@ -4,6 +4,10 @@ import { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/components/Button/ButtonPrimary'
 import TitleEditor from './TitleEditor'
 import { debounce } from 'lodash'
+import TagsInput, { TagNodeShort } from './TagsInput'
+import CategoriesInput from './CategoriesInput'
+import PostOptionsBtn, { PostOptionsData } from './PostOptionsBtn'
+import TiptapEditor from './TiptapEditor'
 import { Editor } from '@tiptap/react'
 import { useMutation } from '@apollo/client'
 import Alert from '@/components/Alert'
@@ -12,6 +16,7 @@ import {
 	NcmazFcCategoryFullFieldsFragmentFragment,
 	PostStatusEnum,
 } from '@/__generated__/graphql'
+import ButtonInsertImage, { ImageState } from './ButtonInsertImage'
 import { getApolloAuthClient } from '@faustwp/core'
 import Button from '../Button/Button'
 import { useRouter } from 'next/router'
@@ -27,8 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import Input from '@/components/Input/Input'
-
 
 interface Props {
 	isEditingPage?: boolean
@@ -41,7 +44,6 @@ interface Props {
 	defaultTags?: TagNodeShort[]
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
-	onUpdate: (editor: Editor) => void
 	//
 }
 
@@ -212,10 +214,10 @@ const CreateNewPostEditor: FC<Props> = ({
 	})
 
 	//
-	const debounceGetTitle = debounce(function (e: string) {
-		setTitleContent(e)
+	const debounceGetTitle = debounce(function (e: Editor) {
+		setTitleContent(e.getText())
 		//
-		updateToLocalStorage('titleContent', e)
+		updateToLocalStorage('titleContent', e.getText())
 	}, 300)
 
 	const debounceGetContentHtml = debounce(function (e: Editor) {
@@ -438,12 +440,31 @@ const CreateNewPostEditor: FC<Props> = ({
 	const renderPostTitle = () => {
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
-				<Input
-					onChange={debounceGetTitle}
-					className="!rounded-s-none"
-					placeholder={'yourwebsite.com'}
-					defaultValue={titleContent}
-				/>
+				<div className="mx-auto w-full max-w-screen-md space-y-5">
+					<div className="">
+						<Label className="text-sm">
+							{T.pageSubmission['Featured image']}
+						</Label>
+						<ButtonInsertImage
+							defaultImage={featuredImage}
+							onChangeImage={handleChangeFeaturedImage}
+						/>
+					</div>
+					<CategoriesInput
+						defaultValue={categories}
+						onChange={handleChangeCategories}
+					/>
+					<TitleEditor
+						defaultTitle={titleContent}
+						onUpdate={debounceGetTitle}
+					/>
+					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
+					{ERROR && (
+						<Alert containerClassName="text-sm" type="error">
+							{ERROR.message}
+						</Alert>
+					)}
+				</div>
 			</div>
 		)
 	}
@@ -458,6 +479,12 @@ const CreateNewPostEditor: FC<Props> = ({
 				<div className="absolute inset-0 flex h-full flex-col">
 					<div className="hiddenScrollbar flex-1 overflow-y-auto">
 						{renderPostTitle()}
+
+						<TiptapEditor
+							defaultContent={contentHTML}
+							onUpdate={debounceGetContentHtml}
+						/>
+					</div>
 
 					<div className="w-full flex-shrink-0 border-t border-neutral-200 px-2.5 dark:border-neutral-600">
 						<div className="mx-auto flex w-full max-w-screen-md flex-wrap gap-2 py-4 pt-[18px] sm:gap-3">
@@ -482,6 +509,10 @@ const CreateNewPostEditor: FC<Props> = ({
 									? T.pageSubmission['Move to draft']
 									: T.pageSubmission['Save draft']}
 							</Button>
+							<PostOptionsBtn
+								defaultData={postOptionsData}
+								onSubmit={handleApplyPostOptions}
+							/>
 							{enableRevertBtn ? (
 								<Button
 									fontSize="text-sm font-medium"
