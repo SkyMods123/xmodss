@@ -12,6 +12,7 @@ import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 import { GET_RELATED_POSTS } from '@/container/singles/single/related';
 
+
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
     showRightSidebar?: boolean;
