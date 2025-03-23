@@ -1,4 +1,3 @@
-import { gql } from '@apollo/client';
 import React, { FC } from 'react';
 import Head from 'next/head';
 import Tag from '@/components/Tag/Tag';
