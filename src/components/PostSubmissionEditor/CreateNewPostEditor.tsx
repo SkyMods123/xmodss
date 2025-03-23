@@ -438,14 +438,12 @@ const CreateNewPostEditor: FC<Props> = ({
 	const renderPostTitle = () => {
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
-				<div className="mx-auto w-full max-w-screen-md space-y-5">
-					<Input
-						onChange={debounceGetTitle}
-						className="!rounded-s-none"
-						placeholder={'yourwebsite.com'}
-						defaultValue={titleContent}
-					/>
-				</div>
+				<Input
+					onChange={debounceGetTitle}
+					className="!rounded-s-none"
+					placeholder={'yourwebsite.com'}
+					defaultValue={titleContent}
+				/>
 			</div>
 		)
 	}
