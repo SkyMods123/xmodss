@@ -444,31 +444,12 @@ const CreateNewPostEditor: FC<Props> = ({
 		return (
 			<div className="w-full px-2.5 pb-10 pt-2.5 lg:py-10">
 				<div className="mx-auto w-full max-w-screen-md space-y-5">
-					<div className="">
-						<Label className="text-sm">
-							{T.pageSubmission['Featured image']}
-						</Label>
-						<ButtonInsertImage
-							defaultImage={featuredImage}
-							onChangeImage={handleChangeFeaturedImage}
-						/>
-					</div>
-					<CategoriesInput
-						defaultValue={categories}
-						onChange={handleChangeCategories}
-					/>
 					<Input
 						onChange={debounceGetTitle}
 						className="!rounded-s-none"
 						placeholder={'yourwebsite.com'}
 						defaultValue={titleContent}
 					/>
-					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
-					{ERROR && (
-						<Alert containerClassName="text-sm" type="error">
-							{ERROR.message}
-						</Alert>
-					)}
 				</div>
 			</div>
 		)
