@@ -32,6 +32,8 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
+import Input from '@/components/Input/Input'
+
 
 interface Props {
 	isEditingPage?: boolean
@@ -456,9 +458,7 @@ const CreateNewPostEditor: FC<Props> = ({
 						onChange={handleChangeCategories}
 					/>
 					<Input
-						onChange={(event) => {
-							debounceGetTitle(event.currentTarget.value)
-						}}
+						onChange={debounceGetTitle}
 						className="!rounded-s-none"
 						placeholder={'yourwebsite.com'}
 						defaultValue={titleContent}
