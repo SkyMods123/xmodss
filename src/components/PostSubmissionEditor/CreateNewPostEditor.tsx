@@ -32,8 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import Input from '@/components/Input/Input'
-
 
 interface Props {
 	isEditingPage?: boolean
@@ -46,7 +44,6 @@ interface Props {
 	defaultTags?: TagNodeShort[]
 	defaultCategories?: NcmazFcCategoryFullFieldsFragmentFragment[]
 	defaultPostOptionsData?: PostOptionsData
-	onUpdate: (editor: Editor) => void
 	//
 }
 
@@ -217,10 +214,10 @@ const CreateNewPostEditor: FC<Props> = ({
 	})
 
 	//
-	const debounceGetTitle = debounce(function (e: string) {
-		setTitleContent(e)
+	const debounceGetTitle = debounce(function (e: Editor) {
+		setTitleContent(e.getText())
 		//
-		updateToLocalStorage('titleContent', e)
+		updateToLocalStorage('titleContent', e.getText())
 	}, 300)
 
 	const debounceGetContentHtml = debounce(function (e: Editor) {
@@ -457,13 +454,9 @@ const CreateNewPostEditor: FC<Props> = ({
 						defaultValue={categories}
 						onChange={handleChangeCategories}
 					/>
-					<Input
-						onChange={(event) => {
-							debounceGetTitle(event.currentTarget.value)
-						}}
-						className="!rounded-s-none"
-						placeholder={'yourwebsite.com'}
-						defaultValue={titleContent}
+					<TitleEditor
+						defaultTitle={titleContent}
+						onUpdate={debounceGetTitle}
 					/>
 					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
 					{ERROR && (
