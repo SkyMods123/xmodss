@@ -32,8 +32,6 @@ import errorHandling from '@/utils/errorHandling'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores/store'
 import getTrans from '@/utils/getTrans'
-import Input from '@/components/Input/Input'
-
 
 interface Props {
 	isEditingPage?: boolean
@@ -463,7 +461,7 @@ const CreateNewPostEditor: FC<Props> = ({
 						}}
 						className="!rounded-s-none"
 						placeholder={'yourwebsite.com'}
-						defaultTitle={titleContent}
+						defaultValue={titleContent}
 					/>
 					<TagsInput defaultValue={tags} onChange={handleChangeTags} />
 					{ERROR && (
