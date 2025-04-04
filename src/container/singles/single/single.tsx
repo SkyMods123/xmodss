@@ -11,6 +11,7 @@ import { gql, useQuery } from '@apollo/client';
 import { TPostCard } from '@/components/Card2/Card2';
 import SingleRelatedPosts from '@/container/singles/SingleRelatedPosts';
 import { GET_RELATED_POSTS } from '@/container/singles/single/related';
+import PostCardLikeAction from '@/components/PostCardLikeAction/PostCardLikeAction'
 
 export interface SingleType1Props {
     post: FragmentTypePostFullFields;
@@ -198,6 +199,10 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                             </div>
                             <aside className="script-similar-scripts lg:col-span-1">
                                 <div className="rounded-lg border text-card-foreground shadow-sm sticky top-15 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:w-[400px] h-[900px] ">
+                                    <PostCardLikeAction
+							            likeCount={ncPostMetaData?.likesCount || 0}
+							            postDatabseId={databaseId}
+						            />
                                     <div className="flex flex-col space-y-1.5 p-6 pb-3">
                                       <SingleRelatedPosts
                                         posts={relatedPosts}
