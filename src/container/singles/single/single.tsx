@@ -145,10 +145,6 @@ const SingleType1: FC<SingleType1Props> = ({ post, showRightSidebar }) => {
                                                             avatarSize="h-7 w-7 text-sm"
                                                         />
                                                         <div className="flex items-center justify-between">
-								<PostCardLikeAction
-					    				likeCount={ncPostMetaData?.likesCount || 0}
-					    				postDatabseId={databaseId}
-				    				/>
                                                             <a className="flex items-center gap-2" href="https://rscripts.net/@0x256">
                                                                 <span className="flex cursor-pointer items-center gap-1 text-base font-medium text-foreground hover:text-primary">
                                                                     viewCount
