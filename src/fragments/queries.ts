@@ -1,4 +1,6 @@
-import { gql } from '@/__generated__'
+import { useQuery } from '@apollo/client'
+import { gql } from '../__generated__'
+import { TPostCard } from '@/components/Card2/Card2'
 
 export const GET_POSTS_NCMAZ_META_BY_IDS = gql(/* GraphQL */ `
 	query QueryGetPostsNcmazMetadataByIds(
@@ -104,6 +106,7 @@ export const NC_COMMENT_FULL_FRAGMENT = gql(/* GraphQL */ `
 					uri
 					url
 					name
+     					isVerified
 					ncUserMeta {
 						featuredImage {
 							node {
@@ -287,3 +290,65 @@ export const QUERY_GET_POSTS_BY_USER_REACTION = gql(/* GraphQL */ `
 		}
 	}
 `)
+
+export const GET_RELATED_POSTS = gql(`
+  query GetRelatedPosts($databaseId: Int!) {
+    posts(where: { isRelatedOfPostId: $databaseId }, first: 4) {
+      nodes {
+        databaseId
+        title
+        uri
+        date
+        excerpt
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+          }
+        }
+        author {
+          node {
+            name
+            uri
+            avatar {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`)
+
+// Možete dodati i izvozni interface za tipizaciju
+export interface RelatedPostsData {
+  posts: {
+    nodes: Array<{
+      databaseId: number;
+      title: string;
+      uri: string;
+      date: string;
+      excerpt: string;
+      featuredImage?: {
+        node: {
+          sourceUrl: string;
+          altText: string;
+        };
+      };
+      author: {
+        node: {
+          name: string;
+          uri: string;
+          avatar: {
+            url: string;
+          };
+        };
+      };
+    }>;
+  };
+}
+
+// Tip za varijable upita
+export interface RelatedPostsVars {
+  databaseId: number;
+}

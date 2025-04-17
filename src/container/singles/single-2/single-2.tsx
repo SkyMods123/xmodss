@@ -4,7 +4,13 @@ import NcImage from "@/components/NcImage/NcImage";
 import { getPostDataFromPostFragment } from "@/utils/getPostDataFromPostFragment";
 import SingleHeader from "../SingleHeader";
 import { SingleType1Props } from "../single/single";
+import { GET_RELATED_POSTS } from '@/container/singles/single/related';
 interface Props extends SingleType1Props {}
+import SingleRelatedPosts2 from '@/container/singles/SingleRelatedPosts2';
+import { gql, useQuery } from '@apollo/client';
+import useGetPostsNcmazMetaByIds from "@/hooks/useGetPostsNcmazMetaByIds";
+import { TPostCard } from '@/components/Card2/Card2';
+
 
 const SingleType2: FC<Props> = ({ post }) => {
   //
@@ -19,6 +25,19 @@ const SingleType2: FC<Props> = ({ post }) => {
     ncPostMetaData,
   } = getPostDataFromPostFragment(post || {});
   //
+  // Fetch related posts
+    const { data: relatedPostsData, loading, error } = useQuery(GET_RELATED_POSTS, {
+      variables: { databaseId: Number(databaseId) },
+      skip: !databaseId
+    });
+
+
+    const relatedPosts = (relatedPostsData?.posts?.nodes || []).slice(0, 4);
+
+    // Hook za meta podatke
+    const { loading: loadingRelatedMeta } = useGetPostsNcmazMetaByIds({
+        posts: relatedPosts as TPostCard[]
+    });
 
   const imgWidth = featuredImage?.mediaDetails?.width || 1000;
   const imgHeight = featuredImage?.mediaDetails?.height || 750;
@@ -33,6 +52,12 @@ const SingleType2: FC<Props> = ({ post }) => {
           )}
         </div>
       </header>
+
+
+      <SingleRelatedPosts2
+          posts={relatedPosts}
+          postDatabaseId={databaseId}
+      />
 
       {/* FEATURED IMAGE */}
       {featuredImage?.sourceUrl && (

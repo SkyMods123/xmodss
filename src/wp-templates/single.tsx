@@ -44,7 +44,7 @@ const DynamicSingleType5 = dynamic(
 
 // Eksportovana funkcija za dobijanje related posts
 export const getRelatedPosts = (data: GetPostSiglePageQuery) => {
-  return (data?.posts?.nodes as TPostCard[]) || [];
+  return (data?.posts?.nodes || []);
 }
 
 const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
@@ -193,36 +193,14 @@ const Component: FaustTemplate<GetPostSiglePageQuery> = (props) => {
 						<div className={`relative`}>
 							{renderHeaderType()}
 
-							<div className="container my-10 flex flex-col lg:flex-row">
-								<div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-									<SingleContent post={_post} />
-								</div>
-								<div className="mt-12 w-full lg:mt-0 lg:w-2/5 lg:ps-10 xl:w-1/3 xl:ps-0">
-									<Sidebar categories={_top10Categories} />
-								</div>
-							</div>
 
-							{/* RELATED POSTS */}
-							<DynamicSingleRelatedPosts
-								posts={_relatedPosts}
-								postDatabaseId={databaseId}
-							/>
 						</div>
 					</div>
 				) : (
 					<div>
 						{renderHeaderType()}
 
-						<div className="container mt-10">
-							{/* SINGLE MAIN CONTENT */}
-							<SingleContent post={_post} />
-						</div>
 
-						{/* RELATED POSTS */}
-						<DynamicSingleRelatedPosts
-							posts={_relatedPosts}
-							postDatabaseId={databaseId}
-						/>
 					</div>
 				)}
 			</PageLayout>
